@@ -1,0 +1,85 @@
+<script>
+        var id = $(".modalInspector #request_id"),
+            request_status_id = $(".modalInspector #request_status_id"),
+            allFields = $([]).add(id).add(request_status_id),
+            tips = $(".validateTips");
+</script>
+
+
+<%if !@message.nil?%>
+  <script language="JavaScript">
+    showSuccess("<%=@message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+<%if !@error_message.nil?%>
+  <script language="JavaScript">
+    showError("<%=@error_message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+
+<form class="modalInspector" id="modalDialogForm">
+  <%= hidden_field_tag :request_id, @request.id %>
+  <table border="0" cellspacing="0" cellpadding="2" style="width: 100%" id="deliver_items_form_table">
+    <thead>
+      <%= render :partial => "/products/product_details_header" %>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">
+        <div class="formHolder">
+          <div class="formElementBinder">
+            <label>Цвят(код):</label>
+            <div class="form_element  ">
+              <%=getColorPreviewBox(@request.item_quantity.item.color)%>
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Номер:</label>
+            <div class="form_element  ">
+              <input type="text" id="size" name="size" disabled="disabled" class="disabledFormElement" value="<%=@request.item_quantity.item.size %>">
+            </div>
+          </div>
+        
+          <div class="formElementBinder">
+            <label>От обект:</label>
+            <div class="form_element  ">
+              <input type="text" disabled="disabled" class="disabledFormElement" value="<%= get_location_alias(@request.source_location_id)%>">
+            </div>
+            </div>
+          </div>
+          
+          <div class="formElementBinder">
+            <label>Kъм обект:</label>
+            <div class="form_element  ">
+              <input type="text" disabled="disabled" class="disabledFormElement" value="<%= get_location_alias(@request.destination_location_id)%>">
+            </div>
+          </div>
+          
+          <div class="formElementBinder">
+            <label>Брой:</label>
+            <div class="form_element  ">
+              <input type="text" disabled="disabled" class="disabledFormElement" value="<%= @request.quantity%>">
+            </div>
+          </div>
+
+          <div class="formElementBinder">
+            <label>Бележка: </label>
+            <div class="form_element text_area">
+              <textarea id="note" disabled="disabled" class="disabledFormElement" style="max-height: 35px" name="note"><%=@request.note %></textarea>
+            </div>
+          </div>
+
+          <div class="formElementBinder">
+            <label>Статус:</label>
+            <div class="form_element  ">
+              <%= select_tag :request_status_id, options_from_collection_for_select(@request_statuses_select_list, "id", "alias", @request.request_status_id) %>
+            </div>
+          </div>
+          
+        </div><p class="validateTips"></p></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

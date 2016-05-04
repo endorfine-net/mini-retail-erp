@@ -1,0 +1,29 @@
+<tr>
+  <td valign="top"><h3><%= @product.alias%></h3></td>
+  <td valign="top" style="width: 40%" align="right" rowspan="2">
+  <div class="mainPhoto">
+    <img src="/images/spacer.gif" width="150" height="150" alt="<%= @product.alias%>" style="background-image:url(<%= @product.photo.url(:thumb)%>)" id="main_photo"/>
+  </div></td>
+</tr>
+<tr>
+  <td valign="top">
+  <table width="100%" cellpadding="2" cellspacing="0" class="detailsHeader">
+    <tr>
+      <th valign="top"> Тип: </th>
+      <td valign="top"> <%= @product.product_type.alias%> </td>
+    </tr>
+    <tr>
+      <th valign="top"> Код: </th>
+      <td valign="top"> <%= @product.product_code%> </td>
+    </tr>
+    <tr>
+      <th valign="top"> Колекция: </th>
+      <td valign="top"> <%= @product.collection_year%>, <%= get_season_name( @product.collection_season)%> </td>
+    </tr>
+    <tr>
+      <th valign="top"> Бележки: </th>
+      <td valign="top" class="itemNotes"> <%= @product.note%> </td>
+    </tr>
+  </table>
+  </td>
+</tr>

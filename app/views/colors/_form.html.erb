@@ -1,0 +1,65 @@
+<script language="JavaScript">
+$(document).ready(function() {
+  $('#color_primary').colpick({
+    layout:'hex',
+    flat:false,
+    submit:0,
+    colorScheme:'light',
+    onChange:function(hsb,hex,rgb,fromSetColor) {
+      if(!fromSetColor) $('#color_primary').val(hex);
+    }
+  })
+  .keyup(function(){
+    $(this).colpickSetColor(this.value);
+  });
+  
+  $('#color_secondary').colpick({
+    layout:'hex',
+    flat:false,
+    submit:0,
+    colorScheme:'light',
+    onChange:function(hsb,hex,rgb,fromSetColor) {
+      if(!fromSetColor) $('#color_secondary').val(hex);
+    }
+  })
+  .keyup(function(){
+    $(this).colpickSetColor(this.value);
+  });
+});
+</script>
+
+<fieldset class="commonParams ui-widget-content">
+  <legend>Задължителни параметри</legend>
+  	<%=render :partial => "/cms_form_elements_web", :locals =>{
+      :type => "text_field",
+      :param => "alias",
+      :title => "Наименование",
+      :example => "Въведете Наименование на цвета",
+      :f => f
+    }%>
+    <%=render :partial => "/cms_form_elements_web", :locals =>{
+      :type => "text_field",
+      :param => "code",
+      :title => "Код на цвета",
+      :example => "Въведеде Код на цвета",
+      :f => f
+    }%>
+    <%=render :partial => "/cms_form_elements_web", :locals =>{
+      :type => "text_field",
+      :param => "primary",
+      :title => "Основен цвят",
+      :example => "Изберете Основен цвят",
+      :f => f
+    }%>
+</fieldset>
+<fieldset class="optionalParams ui-widget-content">
+<legend>Допълнителни параметри</legend>
+    <%=render :partial => "/cms_form_elements_web", :locals =>{
+      :type => "text_field",
+      :param => "secondary",
+      :title => "Допълнителен цвят",
+      :example => "Изберете Допълнителен цвят",
+      :f => f
+    }%>
+</fieldset>
+

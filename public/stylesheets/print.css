@@ -1,0 +1,35 @@
+@charset "utf-8";
+body{ font-family:Verdana, Geneva, sans-serif; font-size:85%;}
+#header{ border-bottom:1px solid #ccc;}
+#main_photo_holder{ width:435px; height:325px; display:block; margin:10px 0; }
+.thumbs{width:150px; height:100px; display:block; margin:10px 0 0 30px;}
+.mainPhoto, .thumbs{border:1px solid #999;}
+.mainPhoto{ margin:0 auto;}
+#main_photo_holder img{ padding:0px;}
+.mainPhoto, #thumbnails{ text-align:center;}
+.container_12{ width:680px;}
+.grid_12{ width:680px; float:left;}
+.grid_4{width:220px; display:block; clear:none; float:left;}
+.grid_6{width:340px; display:block; clear:none; float:left;}
+.grid_8{width:450px; display:block; clear:none; float:left;}
+h1{ font-size:18px; margin:10px 0; }
+h2{ font-size:16px; margin:10px 0; display:inline}
+h3{ font-size:14px; margin:10px 0; display:inline}
+h4{ font-size:13px;margin:10px 0;display:inline}
+p, li{ font-size:12px; line-height:18px;}
+p{ text-align:justify;}
+.brokerOfficeName{font-size:12px; margin:5px 0;}
+ul{margin:10px 0; padding:0 15px;}
+li{ float:left; clear:none; list-style:inherit; margin-right:30px;}
+#contacts_info{ margin:10px 0 0 0;}
+#contacts_info li{ display:list-item; margin-right:0px; float:none;}
+#contacts_info h2, #contacts_info h3, #contacts_info h4{ display:block; margin:5px 0;}
+
+@media screen {
+	.page-break	{ height:10px; width:680px; border-top:1px dotted #999; margin-bottom:13px; float:left; clear:both;  }
+}
+@media print {
+	.page-break { height:1px; page-break-before:always; margin:0; border-top:none; width:680px; float:left; clear:both; }
+}
+
+

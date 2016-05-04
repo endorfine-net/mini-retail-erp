@@ -1,0 +1,6 @@
+#script/plugin install git://github.com/mislav/will_paginate.git
+#script/plugin install git://github.com/technoweenie/restful-authentication.git
+#mv vendor/plugins/restful-authentication vendor/plugins/restful_authentication
+#script/plugin install git://github.com/thoughtbot/paperclip.git
+#script/plugin install git://github.com/mbleigh/acts-as-taggable-on.git
+#script/plugin install git://github.com/technoweenie/permalink_fu.git

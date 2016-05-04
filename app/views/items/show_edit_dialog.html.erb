@@ -1,0 +1,90 @@
+<script>var item_quantity_id = $(".modalInspector #item_quantity_id"), datetime = $(".modalInspector #datetime"), delivery_price = $(".modalInspector #delivery_price"), price = $(".modalInspector #price"), amount_current = $(".modalInspector #amount_current"), amount_delivered = $(".modalInspector #amount_delivered"), allFields = $([]).add(item_quantity_id).add(delivery_price).add(price).add(amount_current).add(amount_delivered).add(datetime), tips = $(".validateTips");</script>
+
+<script>
+  $("#datetime").datetime({
+                          duration: '',  
+                          showTime: true,  
+                          constrainInput: false,  
+                          stepMinutes: 1,  
+                          stepHours: 1,  
+                          altTimeField: '',  
+                          time24h: false });
+</script>
+
+<%if !@message.nil?%>
+  <script language="JavaScript">
+    showSuccess("<%=@message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+<%if !@error_message.nil?%>
+  <script language="JavaScript">
+    showError("<%=@error_message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+<form class="modalInspector" id="modalDialogForm">
+  <%= hidden_field_tag :item_quantity_id, @item_quantity.id %>
+  <table border="0" cellspacing="0" cellpadding="2" style="width: 100%" id="add_items_form_table">
+    <thead>
+      <%= render :partial => "/products/product_details_header" %>      
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">
+        <div class="formHolder">
+        <% if has_role?("manager")%>
+          <div class="formElementBinder">
+            <label>Дата, час: </label>
+            <div class="form_element ">
+                <input name="datetime" id="datetime" type="text"  value="<%= @datetime%>"> 
+            </div>
+          </div>
+        <%end%>
+          <div class="formElementBinder">
+            <label>Цвят(код):</label>
+            <div class="form_element  ">
+              <%=getColorPreviewBox(@item_quantity.item.color)%>
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Номер:</label>
+            <div class="form_element  ">
+              <input type="text" id="size" name="size" disabled="disabled" class="disabledFormElement" value="<%=@item_quantity.item.size %>">
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Доставна цена:</label>
+            <div class="form_element  ">
+              <input type="text" id="delivery_price" name="delivery_price" value="<%=@item_quantity.item.delivery_price %>">
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Начална цена:</label>
+            <div class="form_element  ">
+              <input type="text" id="old_price" name="old_price" disabled="disabled" class="disabledFormElement" value="<%=@item_quantity.item.old_price %>" >
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Продажна цена:</label>
+            <div class="form_element  ">
+              <input type="text" id="price" name="price"  value="<%=@item_quantity.item.price %>">
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Наличност: </label>
+            <div class="form_element  ">
+              <input type="text" id="amount_current" name="amount_current" value="<%=@item_quantity.amount_current %>">
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Доставени: </label>
+            <div class="form_element  ">
+              <input type="text" id="amount_delivered" name="amount_delivered" value="<%=@item_quantity.amount_delivered %>">
+            </div>
+          </div>
+        </div><p class="validateTips"></p></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

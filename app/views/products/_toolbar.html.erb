@@ -1,0 +1,14 @@
+
+  <div id="toolbar" class="grid_5 alpha">
+    <%= select_tag("location_id", "<option value="">[Обект]</option>" + options_from_collection_for_select(@locations_select_list, :id, :alias, @location_id.to_i), :class => "ui-state-active ui-corner-all", :style=> "width:auto")%>
+    <%# select_tag("product_type_id", "<option value="">[Тип продукт]</option>" + options_from_collection_for_select(@product_types, :id, :alias, @product_type_id.to_i), :class =>"ui-button ui-widget  ui-state-default ui-corner-all", :style=> "width:30%") -%>
+    <%# select_tag("user_id", "<option value="">[Потребител]</option>" + options_from_collection_for_select(@users, :id, :alias, @user_id.to_i), :class =>"ui-button ui-widget  ui-state-default ui-corner-all", :style=> "width:32%") -%>
+    <input type="submit" value="Филтър"/>
+  </div>
+
+
+<script type="text/javascript">
+	$(function() {
+		$("input:submit", "#toolbar").button();
+	}); 
+</script>

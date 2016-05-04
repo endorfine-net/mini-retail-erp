@@ -1,0 +1,21 @@
+
+  <div id="offer_open">
+    <form id="productListOpenByCode">
+      <input id="open_product_by_code" name="open_product_by_code" type="text" class="ui-state-active ui-corner-all"  value="<%=open_product_by_code%>"/>
+      
+      <input name="location_id" id="location_id" type="hidden" value="<%= params[:location_id]%>"/>
+      <input name="date_from" id="date_from" type="hidden" value="<%= params[:date_from]%>"/>
+      <input name="date_to" id="date_to" type="hidden" value="<%= params[:date_to]%>"/>
+      <input name="product_type_id" id="product_type_id" type="hidden" value="<%= params[:product_type_id]%>"/>
+      <input name="collection_year" id="collection_year" type="hidden" value="<%= params[:collection_year]%>"/>
+      <input name="collection_season" id="collection_season" type="hidden" value="<%= params[:collection_season]%>"/>
+      <input name="search_alias" id="search_alias" type="hidden" value="<%= params[:search_alias]%>"/>
+      <input name="search_note" id="search_note" type="hidden" value="<%= params[:search_note]%>"/>
+      
+      <input type="submit" value="Търси по код"/>
+    </form>
+  </div>
+
+<script type="text/javascript">
+		$("input:submit").button();
+</script>

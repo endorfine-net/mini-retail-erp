@@ -1,0 +1,30 @@
+<script type="text/javascript">
+    $(window).load(function () {
+        $("#date_from").datepicker();
+        $("#date_to").datepicker();
+    });
+</script>
+
+<form id="productListForm">
+  <div id="toolbar" class="grid_12">
+    <label for="date_from">От:</label>
+    <input name="date_from" id="date_from" type="text" class="datepicker ui-state-active ui-corner-all" value="<%= @date_from %>"/>
+    <label for="date_to">До:</label>
+    <input name="date_to" id="date_to" type="text" class="datepicker ui-state-active ui-corner-all" value="<%= @date_to %>"/>
+    <%= select_tag("request_status_id", "<option value=" ">[Статус]</option>" + options_from_collection_for_select(@request_statuses_select_list, :id, :alias, @request_status_id.to_i),
+                   :class => "ui-state-active ui-corner-all", :style => "width:auto") %>
+    <% if has_role?("manager") %>
+        <%= select_tag("user_id", "<option value=" ">[Потребител]</option>" + options_from_collection_for_select(@users_select_list, :id, :alias, @user_id.to_i),
+                       :class => "ui-state-active ui-corner-all", :style => "width:auto") %>
+        <%= select_tag("location_id", "<option value=" ">[Обект]</option>" + options_from_collection_for_select(@locations_select_list, :id, :alias, @location_id.to_i),
+                       :class => "ui-state-active ui-corner-all", :style => "width:auto") %>
+     <%end%>
+    <input placeholder="Код на продукт" name="product_code" id="product_code" type="text" class="ui-state-active ui-corner-all" value="<%=@product_id %>"/>
+    <%= select_tag("source_location_id", "<option value=" ">[От]</option>" + options_from_collection_for_select(@locations_select_list, :id, :alias, @source_location_id.to_i),
+                   :class => "ui-state-active ui-corner-all", :style => "width:auto") %>
+    <%= select_tag("destination_location_id", "<option value=" ">[Към]</option>" + options_from_collection_for_select(@locations_select_list, :id, :alias, @destination_location_id.to_i),
+                   :class => "ui-state-active ui-corner-all", :style => "width:auto") %>
+    <input placeholder="Бележки" name="search_note" id="search_note" type="text" class="ui-state-active ui-corner-all" value="<%= @search_note %>"/>
+    <input type="submit" value="Филтър"/>
+  </div>
+</form>

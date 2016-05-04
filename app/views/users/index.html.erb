@@ -1,0 +1,74 @@
+
+<div class="contentWrapper">
+       <h2>
+       <%= link_to image_tag("/images/icon-add.png", :height => '32', :width => '32', :alt => "Добави нов запис", :title => "Добави нов запис", :border =>'0'), url_for(:action => 'new') %>
+       Списък с "<strong>Потребители</strong>"</h2>
+      <div id="toolbar">
+        <form>      
+          <div id="statuses">
+            <input type="radio" id="1" value="active" name="type" <%="checked" if (@type == "active")%>/><label for="1" title="Активни">Активни</label>
+            <input type="radio" id="2" value="archive" name="type" <%="checked" if (@type == "archive")%>/><label for="2" title="Неактивни">Неактивни</label>
+          </div>                   
+          <input type="submit" value="филтър"/>
+        </form>
+      </div>
+        <script type="text/javascript">
+        $(function(){      
+                $("#statuses").buttonset(); 
+                $("input:submit", "#toolbar").button();       
+           });
+        </script>
+            <table cellpadding="2" cellspacing="0" border="0" class="bonsaiTable ui-corner-all" id="productList">
+              <thead>
+                <tr>
+                  <td colspan="10">         
+          <table border="0" cellpadding="0" class="headerElements">
+            <tr>        
+           <td class="filter" nowrap="nowrap" valign="top"><div class="buttonHolder"><a href="javascript:;"><img src="/images/brush3.png" alt="Изчистване на бързо търсене" name="filterClearTwo" width="24" height="24" id="filterClear" title="Изчистване на бързо търсене" border="0" /></a> </div>
+            <div style="float:right">Бързо търсене:
+              <input id="filterBox" value="" type="text" />
+            </div>
+          </td>
+          </tr>
+        </table>      
+          </td>
+                </tr> 
+                <tr class="columnHeads">
+                  <th class="ID"><a href="#">&nbsp;ID&nbsp;&nbsp;</a></th>
+                  <th><a href="#">Име</a></th>
+                  <th><a href="#">Роля</a></th>
+                  <th><a href="#">Потр.име</a></th>
+                  <th><a href="#">Email</a></th>
+                  <th><a href="#">Обект</a></th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody  class="listBody">
+                <% @users.each do |u| %>
+                <tr>
+                  <td align="CENTER"><%=u.id -%></td>
+                  <td align="CENTER"><%=u.alias unless u.alias.blank? -%></td>
+                  <td align="CENTER"><%=u.role.alias unless u.role_id.blank? -%></td>
+                  <td align="CENTER"><%=u.login -%></td>
+                  <td align="CENTER"><%=u.email -%></td>
+                  <td align="CENTER"><%=u.location.alias unless u.location.blank? -%></td>
+                  <td align="CENTER" class="tools">
+                    <div class="tableButtonsWrapper">
+                      <%= link_to image_tag("/images/icon-edit.png", :height => '24', :width => '24', :alt => "Редакция", :title => "Редакция",:border =>'0'), url_for(:action => 'edit', :id => u, :type => @type) %>
+                      <%= link_to(image_tag("/images/icon-archive.png", :height => '24', :width => '24', :alt => "Архивиране", :title => "Архивиране", :border =>'0'), url_for(:action => 'destroy', :id => u, :type => @type, :user_action => "archive"), :confirm => 'Сигурни ли, сте?', :method => :delete) if u.status_id == 1 %>
+                      <%= link_to(image_tag("/images/icon-dearchivate.png", :height => '24', :width => '24', :alt => "Изваждане от архив", :title => "Изваждане от архив", :border =>'0'), url_for(:action => 'destroy', :id => u, :type => @type, :user_action =>"archive"), :confirm => 'Сигурни ли, сте?', :method => :delete) if u.status_id == 3 %>                      
+                    </div>
+                  </td>
+                </tr>
+                <%end%>
+              </tbody>
+            </table>
+            <input name="sort_direction" id="sort_direction" type="hidden" <%if !@sort_direction.blank?%>value="<%=@sort_direction%>"<%end%> />
+            <input name="sort_column" id="sort_column" type="hidden" <%if !@sort_direction.blank?%>value="<%=@sort_column%>"<%end%>/>
+            <input name="last_page" id="last_page" type="hidden" <%if !@sort_direction.blank?%>value="<%=@last_page%>"<%end%>/>
+            <input name="search_string" id="search_string" type="hidden" <%if !@search_string.blank?%>value="<%=@search_string%>"<%end%>/>
+            <script type="text/javascript">
+                transform_table_list("<%=self.controller_name%>","<%=self.action_name%>");
+            </script>
+          </div>
+<br />

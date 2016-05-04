@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    $(window).load(function() {
+        $("#date_from").datepicker();
+        $("#date_to").datepicker();
+
+        product_multi_edit_items();
+        product_request_items();
+    });
+</script>
+
+<form id="productListForm">
+  <input name="open_product_by_code" id="open_product_by_code" type="hidden" value="<%= params[:open_product_by_code]%>"/>
+  <div id="toolbar" class="grid_5 alpha">
+    <label for="date_from">От:</label>
+    <input name="date_from" id="date_from" type="text" class="datepicker ui-state-active ui-corner-all" value="<%= @date_from%>"/>
+    <label for="date_to">До:</label>
+    <input name="date_to" id="date_to" type="text" class="datepicker ui-state-active ui-corner-all" value="<%= @date_to%>"/>
+    <%= select_tag("product_type_id", "<option value="">[Тип продукт]</option>" + options_from_collection_for_select(@product_types, :id, :alias, @product_type_id.to_i), :class =>"ui-state-active ui-corner-all", :style=> "width:11em") -%>
+    <%= select_tag :collection_year, "<option value="">[Година на кол.]</option>" + options_for_select(@collection_years, @collection_year.to_i), :class =>"ui-state-active ui-corner-all", :style=> "width:12em"%>
+    <%= select_tag :collection_season,
+                   "<option value=''>[Сезон на кол.]</option>" +
+                           "<option value='1' " + get_selected_collection_season(@collection_season, 1) + ">" + get_season_name(1) + "</option>" +
+                           "<option value='2' " + get_selected_collection_season(@collection_season, 2) + ">" + get_season_name(2) + "</option>",
+                   :class =>"ui-state-active ui-corner-all", :style=> "width:11em"%>
+    <label for="search_alias">Вид:</label>
+    <input name="search_alias" id="search_alias" type="text" class="ui-state-active ui-corner-all" value="<%=@search_alias%>"/>
+    <label for="search_note">Бележки:</label>
+    <input name="search_note" id="search_note" type="text" class="ui-state-active ui-corner-all" value="<%=@search_note%>"/>
+    <input type="submit" value="Филтър"/>
+  </div>
+</form>

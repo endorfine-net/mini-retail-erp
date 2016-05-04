@@ -1,0 +1,342 @@
+<div id="multi_edit_price" name="multi_edit_price" title="Редакция на цена">
+  <div style="margin-top:250px; width:inherit; text-align:center">
+    <img src="/images/ajax-loader.gif" width="35" height="35" alt="Моля изчакайте..."/>
+  </div>
+</div>
+
+<div id="request_items" name="request_delivery_items" title="Заявка за доставка">
+  <div style="margin-top:250px; width:inherit; text-align:center">
+    <img src="/images/ajax-loader.gif" width="35" height="35" alt="Моля изчакайте..." />
+  </div>
+</div>
+
+<div class="contentWrapper">
+  <h2><%= @title %></h2>
+
+  <%= render :partial => "toolbar_statistics" %>
+
+  <%= render :partial => "open_product", :locals => {:open_product_by_code => open_product_by_code} %>
+  <script type="text/javascript">
+      $(function () {
+          $("input:submit", "#toolbar").button();
+      });
+  </script>
+
+  <table cellpadding="0" cellspacing="0" border="0" class="bonsaiTable statistics ui-corner-all" id="productList">
+    <thead>
+    <tr>
+      <td colspan="15">
+        <table border="0" cellpadding="0" class="headerElements" style="display:inline">
+          <tr>
+            <td class="filter" nowrap="nowrap" valign="top">
+              <div class="buttonHolder" style="float:right">
+                <a href="javascript:;">
+                  <img src="/images/icon-clear.png" alt="Изчистване на бързо търсене" name="filterClearTwo" width="24" height="24" id="filterClear" title="Изчистване на бързо търсене" border="0"/>
+                </a>
+              </div>
+              <div style="float:right">Филтриране по текст в страницата:
+                <input id="filterBox" value="" type="text"/>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <%
+       #Products loop START
+    %>
+    <% products.each do |product| %>
+        <% product_items = product.items.find(:all, :order => "color_id, size") %>
+
+        <tr class="columnHeads">
+          <th>Продукт</th>
+          <% locations.each do |location| %>
+              <th><%= location.short_name %></th>
+          <% end %>
+          <th>ОБЩО</th>
+        </tr>
+        </thead>
+        <tbody class="listBody">
+        <%# location_permissions_check = ((has_role?("admin") || has_role?("manager") || has_role?("storageman")) || current_user.location_id == location.id)%>
+        <tr rel="<%= product.id %>">
+          <td align="CENTER" valign="top" class="listPhotoDetails">
+            <ul>
+              <li class="productPhoto">
+                <a href="<%= product.photo.url(:full) %>" target="_blank"><%= image_tag(product.photo.url(:thumb), html_options ={:border, "0"}) unless product.photo_file_name.blank? -%></a>
+              </li>
+              <li class="detailsIndentificator"><%= product.product_code %></li>
+              <li><%= product.product_type.alias %></li>
+              <li><%= product.alias %></li>
+              <li title="<%= format_datetime(product.updated_at) %>"><%= format_datetime_tablesorter(product.created_at) %></li>
+              <li><%= product.collection_year %>, <%= get_season_name(product.collection_season) %></li>
+              <li><%= product.note %></li>
+            </ul>
+          </td>
+
+          <%
+             #Locations loop START
+          %>
+          <% locations.each do |location| %>
+              <% item_quantities = ItemQuantity.order_by_item_size_and_item_color.find(:all, :conditions => ["item_quantities.location_id = #{location.id} AND items.product_id =#{product.id}"]) %>
+              <%
+                 location_items_ids = []
+                 item_quantities.each do |item_quantity|
+                   location_items_ids << item_quantity.item_id
+                 end
+              %>
+
+              <td valign="top" class="productListItems">
+                <table cellspacing="0" class="statisticsInner">
+
+                  <% if item_quantities.size > 0 %>
+                      <tr>
+                        <th style="width:22%">Цвят</th>
+                        <th style="width:18%">Номер</th>
+                        <th style="width:18%">Налич.</th>
+                        <th style="width:18%">Прод.</th>
+                      </tr>
+                  <% else %>
+                      <tr>
+                        <th colspan="4" align="center">-</th>
+                      </tr>
+                  <% end %>
+
+
+                  <%
+                     #ItemQuantities loop START
+                  %>
+                  <% amount_by_color = nil %>
+                  <% total_amount_by_location = nil %>
+                  <% product_items.each_with_index do |product_item, index| %>
+
+                      <% if location_items_ids.include?(product_item.id) %>
+
+                          <%
+                             item_quantity = item_quantities.detect { |iq| iq.item_id == product_item.id }
+                             amount_by_color = (amount_by_color.nil?)? 0 : amount_by_color
+                             amount_by_color += item_quantity.amount_current
+
+                             total_amount_by_location = (total_amount_by_location.nil?)? 0 : total_amount_by_location
+                             total_amount_by_location += item_quantity.amount_current
+                          %>
+
+                          <% item_sales = ItemOperation.sales.count(:all, :conditions => ["item_id = #{item_quantity.item_id} AND location_id = #{location.id} AND (DATE(created_at) BETWEEN '#{@date_from}' AND '#{@date_to}')"]) %>
+                          <tr>
+                            <td class="colorPreviewContainer"><%= getColorPreviewBoxShort(item_quantity.item.color) %></td>
+                            <td><%= item_quantity.item.size %></td>
+                            <td <%= highlightIfLowQuantity(item_quantity.amount_current) %>>
+                                <%if item_quantity.amount_current == 0 || !has_permissions?("items", "request")%>
+                                    <%=item_quantity.amount_current%>
+                                <%else%>
+                                    <%= link_to_remote(item_quantity.amount_current,
+                                                 {
+                                                         :url => url_for(params.merge(
+                                                                                 :controller => 'items',
+                                                                                 :action => 'show_request_dialog',
+                                                                                 :id => item_quantity.id)),
+                                                         :update => "request_items",
+                                                         :method => :get},
+                                                 {
+                                                         :class => "requestItems",
+                                                         :title => "Заявка за доставка"
+                                                 }) if has_permissions?("items", "request") %>
+                                <%end%>
+
+                            </td>
+                            <td <%= highlightSale(item_sales) %>><%= item_sales %></td>
+                          </tr>
+
+                      <% else %>
+
+                          <tr>
+                            <td colspan="4" align="center" class="colorPreviewContainer">
+                              <div class="colorPreview" style="background-color: #FAFAFA; border-bottom-color: #FAFAFA;">-</div>
+                            </td>
+                          </tr>
+
+                      <% end %>
+
+
+                      <% if (index + 1 == product_items.length) || (product_item.color != product_items[index + 1].color) %>
+                          <% if amount_by_color.nil? %>
+                              <tr class="subTotals">
+                                <td colspan="4">-</td>
+                              </tr>
+                          <% else %>
+                              <tr class="subTotals">
+                                <td colspan="2"></td>
+                                <td align="center"><%=amount_by_color.to_s%></td>
+                                <td></td>
+                              </tr>
+                          <% end %>
+                          <% amount_by_color = nil %>
+                      <% end %>
+
+                  <% end %>
+                  <%
+                     #ItemQuantities loop END
+                  %>
+
+                  <% if total_amount_by_location.nil? %>
+                      <tr class="subTotals total">
+                        <td colspan="4">-</td>
+                      </tr>
+                  <% else %>
+                      <tr class="subTotals total">
+                        <td colspan="2"></td>
+                        <td align="center"><%=total_amount_by_location.to_s%></td>
+                        <td></td>
+                      </tr>
+                  <% end %>
+
+                </table>
+              </td>
+
+          <% end %>
+          <%
+             #Locations loop END
+          %>
+
+          <td valign="top" class="productListItems">
+            <table cellspacing="0" class="statisticsInner">
+
+              <% if product_items.size > 0 %>
+                  <tr>
+                    <th style="width:22%">Цвят</th>
+                    <th style="width:15%">Номер</th>
+                    <th style="width:15%">Налич.</th>
+                    <th style="width:15%">Прод.</th>
+                    <%if has_role?("manager")%>
+                    <th style="width:15%">Дост.цена</th>
+                    <%end%>
+                    <th style="width:15%">Нач.цена</th>
+                    <th>Цена</th>
+                  </tr>
+              <% end %>
+
+              <%
+                 all_amount_by_color = 0
+                 all_income_by_color_by_delivery_price = 0
+                 all_income_by_color_by_initial_price = 0
+                 all_income_by_color_by_current_price = 0
+
+                 total_amount = 0
+                 total_income_by_delivery_price = 0
+                 total_income_by_initial_price = 0
+                 total_income_by_current_price = 0
+
+              %>
+              <% product_items.each_with_index do |item, index| %>
+                  <%
+                     all_amount_by_color += item.total_in_stock
+                     all_income_by_color_by_delivery_price += (item.total_in_stock * item.delivery_price)
+                     all_income_by_color_by_initial_price += (item.total_in_stock * item.old_price)
+                     all_income_by_color_by_current_price += (item.total_in_stock * item.price)
+
+                  %>
+                  <% item_sales = ItemOperation.sales.count(:all, :conditions => ["item_id = #{item.id} AND (DATE(created_at) BETWEEN '#{@date_from}' AND '#{@date_to}')"]) %>
+                  <tr>
+                    <td class="colorPreviewContainer"><%= getColorPreviewBoxShort(item.color) %></td>
+                    <td><%= item.size %></td>
+                    <td <%= highlightIfLowQuantityInStatistics(item.total_in_stock) %>><%= item.total_in_stock %></td>
+                    <td <%= highlightSaleInStatistics(item_sales) %>><%= item_sales %></td>
+                    <%if has_role?("manager")%>
+                    <td><%= item.delivery_price %></td>
+                    <%end%>
+                    <td><%= item.old_price %></td>
+                    <td>
+                      <%if !has_permissions?("items", "show_edit_multiple_items_dialog")%>
+                          <%=item.price%>
+                      <%else%>
+                        <%= link_to_remote(item.price,
+                                         {:url => url_for(params.merge(
+                                                                  :controller => 'items',
+                                                                  :action => 'show_multi_edit_dialog',
+                                                                  :id => item.id)),
+                                          :update => "multi_edit_price",
+                                          :method => :get},
+                                         {:class => "multiEditItems"}) %>
+                      <%end%>
+                    </td>
+                  </tr>
+
+                  <% if (index + 1 == product_items.length) || (item.color != product_items[index + 1].color) %>
+                      <%
+                         total_amount += all_amount_by_color
+                         total_income_by_delivery_price += all_income_by_color_by_delivery_price
+                         total_income_by_initial_price += all_income_by_color_by_initial_price
+                         total_income_by_current_price += all_income_by_color_by_current_price
+                      %>
+                      <tr class="subTotals">
+                        <td colspan="2"></td>
+                        <td align="center"><%=all_amount_by_color.to_s%></td>
+                        <td></td>
+                        <%if has_role?("manager")%>
+                        <td align="center"><%=all_income_by_color_by_delivery_price.to_s%></td>
+                        <%end%>
+                        <td align="center"><%=all_income_by_color_by_initial_price.to_s%></td>
+                        <td align="center"><%=all_income_by_color_by_current_price.to_s%></td>
+                        <td></td>
+                      </tr>
+
+                      <%
+                         all_amount_by_color = 0
+                         all_income_by_color_by_delivery_price = 0
+                         all_income_by_color_by_initial_price = 0
+                         all_income_by_color_by_current_price = 0
+                      %>
+
+                  <% end %>
+
+              <% end %>
+
+              <tr class="subTotals total">
+                <td colspan="2"></td>
+                <td align="center"><%=total_amount.to_s%></td>
+                <td></td>
+                <%if has_role?("manager")%>
+                <td align="center"><%=total_income_by_delivery_price.to_s%></td>
+                <%end%>
+                <td align="center"><%=total_income_by_initial_price.to_s%></td>
+                <td align="center"><%=total_income_by_current_price.to_s%></td>
+                <td></td>
+              </tr>
+            </table>
+
+          </td>
+
+        </tr>
+
+    <% end %>
+    <%
+       #Products loop END
+    %>
+
+    </tbody>
+    <tfoot>
+    <tr id="toolBoxTablePagination">
+      <td colspan="20" valign="top">
+        <%= will_paginate products,
+                          :previous_label => image_tag("/images/prev.png", :alt => "Предишна", :border => '0', :class => 'prev'),
+                          :next_label => image_tag("/images/next.png", :alt => "Предишна", :border => '0', :class => 'next'),
+                          :page_links => true,
+                          :inner_window => 5,
+                          :outer_window => 1,
+                          :container => false
+        -%>
+      </td>
+    </tr>
+    </tfoot>
+    </table>
+
+  <input name="search_string" id="search_string" type="hidden"
+         <% if !@search_string.blank? %>value="<%= @search_string %>"
+  <% end %>/>
+  <script type="text/javascript">
+      transform_table_list("<%=self.controller_name%>", "<%=self.action_name%>");
+  </script>
+</div>
+<br/>
+

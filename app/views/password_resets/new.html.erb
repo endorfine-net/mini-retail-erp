@@ -1,0 +1,38 @@
+<style type="text/css">
+.ui-dialog-titlebar-close{ display:none;}
+</style>
+
+<div id="loginScreen" title="Забравена Парола?">
+<% form_tag password_resets_path, html_options = {:id, "password_resets"} do %>	
+	<h3>Въведете електронната поща на потребителя си, за да получите на него инструкции, за смяна на Вашата парола:</h3>
+	<div id="messageBox" style="height:30px; margin-top:20px"><%= flash[:notice] %></div>
+	<fieldset>
+		
+      	<label for="email">Email</label>
+  		<%= text_field_tag "email" %>
+	</fieldset>
+<% end %>
+
+</div>
+
+<script>
+$(document).ready(function(){
+	$("#loginScreen").dialog({
+				bgiframe: true,
+				autoOpen: true,
+				resizable: false,
+				height: 300,
+				width: 500,
+				modal: true,
+				buttons: {								
+					"Отказ": function() {
+						top.window.location="/"
+					},
+					"Изпрати инструкции": function() {
+						$("#password_resets").submit();
+					}
+				}
+	});
+});
+
+</script>

@@ -1,0 +1,8 @@
+
+
+<%if !@results.blank?%>
+  <%= render :partial => "/products/sales", :locals =>{:title => @title, :results => @results}%>
+<%else%>
+  <h2>Няма данни...</h2>  
+  <%= render :partial => "/products/sales_toolbar"%>
+<%end%>

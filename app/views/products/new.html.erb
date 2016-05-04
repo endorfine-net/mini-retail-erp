@@ -1,0 +1,6 @@
+<% form_for([@product], :html => { :multipart => true }) do |f| %>
+  <h2><%= link_to image_tag("/images/icon-back.png", :height => '32', :width => '32', :alt => "Връщане назад", :title => "Връщане назад", :border =>'0'), url_for(:action => 'index') %>  Добавяне на <strong>Продукт</strong></h2>
+  <%= render :partial => '/errors', :locals => { :f => f }%>
+  <%= render :partial => 'form', :locals => { :f => f } -%>
+  <%= render :partial => '/submit_form_buttons', :locals => { :f => f, :button_title => "Запази", :cancel_path => products_path()} -%>
+<% end -%>

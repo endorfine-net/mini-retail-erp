@@ -1,0 +1,1286 @@
+@charset "utf-8";
+/* CSS Document
+ html{overflow-y:scroll; overflow: -moz-scrollbars-vertical;}*/
+div#container.container_12 {
+  min-width: 1000px;
+}
+body {
+  margin: 5px 15px;
+  background-color: #F2F2F2;
+}
+h1 {
+  font-size: 1.3em !important;
+}
+h2 {
+  font-size: 1.2em !important;
+}
+h3 {
+  font-size: 1.1em !important;
+}
+body, label, legend, .example, input, textarea, select, h1, h2, h2 > strong, h3, .subnavHolder, .widgetHolder, .widgetbar, .subnav, .form_element select, .form_element input[type="text"], .form_element input[type="password"], .form_element textarea {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: underline;
+}
+a:hover {
+  color: #090;
+  text-decoration: none
+}
+#loginScreen {
+  padding: 0 40px;
+}
+#loginScreen form {
+  margin: 0;
+}
+#loginScreen label, #loginScreen input {
+  display: block;
+}
+#loginScreen input[type=text], #loginScreen input[type=password] {
+  margin-bottom: 12px;
+  width: 95%;
+  padding: .4em;
+  font-size: 15px;
+}
+#loginScreen #messageBox {
+  display: block;
+  clear: both;
+  margin: 10px 0;
+  height: 20px;
+  overflow: hidden
+}
+#loginScreen #messageBox h2, #loginScreen #messageBox p {
+  display: none;
+}
+#loginScreen #messageBox h3 {
+  text-align: justify;
+}
+#loginScreen #messageBox ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+#loginScreen #messageBox li, #loginScreen #messageBox {
+  color: #C00;
+  font-size: 12px;
+}
+#loginScreen input[type=checkbox] {
+  float: left;
+  clear: none;
+}
+#loginScreen fieldset {
+  padding: 0;
+  border: 0;
+  margin: 5px 0 20px 0;
+}
+#loginScreen a {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #666;
+  text-decoration: underline;
+  float: right;
+}
+#loginScreen a:hover {
+  text-decoration: none;
+  color: #090;
+}
+#loginScreen h1 {
+  font-size: 1.2em;
+  margin: .6em 0;
+}
+#loginScreen div#users-contain {
+  width: 350px;
+  margin: 20px 0;
+}
+#loginScreen div#users-contain table {
+  margin: 1em 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+#loginScreen div#users-contain table td, div#users-contain table th {
+  border: 1px solid #eee;
+  padding: .6em 10px;
+  text-align: left;
+}
+#loginScreen .ui-button {
+  outline: 0;
+  margin: 0;
+  padding: .4em 1em .5em;
+  text-decoration: none;!important;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+#loginScreen .ui-dialog .ui-state-highlight, #loginScreen .ui-dialog .ui-state-error {
+  padding: .3em;
+}
+
+.loginScreen .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+float: none;
+text-align: center;
+}
+
+.loginScreen{
+  font-size: 1em;
+}
+
+
+.ui-datetime {
+  min-width: 300px;
+}
+
+#leftMargin {
+  width: 50%;
+  height: auto;
+}
+#rightMargin {
+}
+/*#container{ display:block; width:1020px;}*/
+#container {
+  /*display: block; width:1020px;*/
+  margin: 0 auto;
+  width:100%;
+}
+#tabs {
+  margin: 0 0 10px 0px;
+  min-height: 600px;
+  padding-bottom: 20px;
+  display: table;
+  width:100%;
+}
+.contentWrapper {
+  white-space: nowrap;
+  display: block;
+  float: left;
+  width: 100%;
+}
+#content {
+  float: left;
+  margin: 0 0 10px 0;
+}
+.threeColumns#content {
+  width: 575px;
+}
+.twoColumns#content {
+  width: 775px;
+}
+.mergedColumns#content {
+  width: inherit;
+}
+.commonParams {
+}
+.languageParams {
+}
+.optionalParams {
+}
+#header {
+  margin: 0px 0px 5px 0px;
+  display: block;
+  height: auto;
+  min-height: 58px; 
+  width:100%;
+}
+#header #logo {
+  float: left;
+  margin: 5px 0 0;
+}
+#header #loggedUserNames {
+  text-align: right;
+}
+#header #loggedUserNames h1 {
+  margin: 15px 0 3px;
+}
+#header #logoutButton {/*text-align:right;*/
+}
+#header #logoutButton img, .buttonHolder img {
+  margin: 1px;
+}
+#header #logoutButton a, .buttonHolder a {
+  display: block;
+  padding: 2px
+}
+#header #logoutButton a {
+  float: right;
+}
+#header #logoutButton a:hover, .buttonHolder a:hover {
+  border: 2px dotted #F90;
+  display: block;
+  padding: 0px;
+  background-color: #FFF;
+}
+#header h1 {
+  margin: 0px;
+}
+#header h1, #header h1 a {
+  color: #3570D0;
+  text-shadow: #CCC 2px 2px 2px;
+  margin: 0px;
+  font-size: 1.4em;
+}
+#header h1 a {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  border-bottom: 1px dotted #0C0;
+  padding-bottom: 0px;
+}
+#header h1 a:hover {
+  color: #090;
+  border-bottom: 0px dotted #3570D0;
+}
+h2 {
+  font-size: 1.7em !important;
+  color: #FFF;
+  background: url(../images/gray-grad-2.gif) repeat-x scroll #9d9d9d top;
+  float: left;
+  display: block;
+  width: 100%;
+  clear: both;
+  font-weight: normal;
+  line-height: 2em;
+  text-indent: 20px;
+  margin: 15px 0 15px 0;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid #999;
+}
+h2.toolbar {
+  color: #FFF;
+  background: url(../images/purple-h2-grad.gif) repeat-x scroll #686d84 top;
+  margin: 15px 0 0 0;
+}
+#form_error_message {
+  margin-right: 18px;
+}
+div.ui-state-error, div.ui-state-highlight {
+  padding: 0pt 0.7em;
+  margin-top: 5px;
+}
+.form_error {
+  float: left;
+  display: block;
+  margin: 0 0 15px 0;
+  width: 100%;
+  font-size: 85%;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  padding: 0pt 0.7em;
+}
+.errorExplanation {
+  margin: 0;
+}
+.errorExplanation h4 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+}
+.errorExplanation p {
+  font-weight: bold;
+  margin: 0 20px;
+}
+.errorExplanation ul {
+  margin: 10px 0;
+}
+#errorExplanation {
+  display: none
+}
+#form_error_message #errorExplanation {
+  display: block;
+  font-size: 1.2em;
+}
+
+h2 strong, div#client_searches_count_display_intext {
+  color: #FFF;
+  text-shadow: #333 1px 1px 2px;
+}
+div#client_searches_count_display_intext, div#client_searches_count_display_intext div {
+  display: inline;
+  clear: none;
+  font-size: 1.4em;
+}
+div#client_searches_count_display_intext div {
+  font-size: 1.0em;
+}
+h2 a img {
+  margin: 1px;
+}
+h2 a, h2 input {
+  margin: 0 3px 0 0;
+  float: right;
+  clear: none;
+  display: inline-block;
+  padding: 2px;
+  text-indent: 0px;
+  margin: 1px;
+}
+h2 a:hover, h2 input:hover {
+  border: 2px dotted #F90;
+  padding: 0px;
+  background-color: #FFF;
+}
+h2 table {
+  padding: 1px;
+  float: right;
+  clear: none;
+  display: inline-block;
+  width: auto;
+}
+h2 select {
+  font-size: 12px !important;
+  font-family: Verdana, Geneva, sans-serif;
+  text-transform: lowercase;
+  margin-right: 5px;
+  padding: 5px !important;
+  text-align: left;
+}
+.subnavHolder {
+  float: left;
+  width: 190px;
+  margin: 15px 15px 0 0;
+}
+.widgetHolder {
+  float: right;
+  width: 190px;
+  margin: 25px 0 0 15px;
+}
+.subnavTitle {
+  /*	font-family:Verdana, Geneva, sans-serif;*/
+  font-size: 14px;
+  line-height: 28px;
+  color: #FFF;
+  font-weight: bold;
+  padding: 0 7px;
+  background: url(../images/gray-widgets-head.gif) repeat-x scroll #c0c0c0 top;
+  border: 1px solid #999;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  margin: 0;
+  display: block;
+  text-shadow: #333 1px 1px 2px;
+}
+.subnav, .widgetbar {
+  font-size: 11px;
+}
+.subnav div {
+}
+.subnav h3 {
+}
+.subnav h3 a, .widgetbar h3 a {
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: #CCC 2px 2px 2px;
+  padding-bottom: 0px;
+}
+.subnav ul, .widgetbar ul {
+  margin: 0px;
+  padding: 0px;
+}
+.subnav li, .widgetbar li {
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 0px;
+  background-image: url(../images/bullet_square_blue.png);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.subnav li a, .widgetbar li a {
+  margin-left: 14px;
+  color: #666;
+  text-decoration: none;
+  line-height: 18px;
+  height: 18px;
+}
+.subnav li a:hover, .widgetbar li a:hover {
+  margin-left: 14px;
+  border-bottom: 1px solid #0C0;
+  color: #333;
+}
+
+fieldset {
+  margin: 5px 0px 10px 0px;
+  padding: 5px;
+  display: block;
+  clear: both;
+  width: inherit;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+fieldset.dualColumn {
+  width: 47%;
+  display: inline-block !important;
+  clear: none !important;
+  float: left;
+}
+
+fieldset legend {
+  font-size: 1.2em;
+  line-height: 1.4em;
+  padding: 3px 15px;
+  border: 1px solid #999;
+  margin-left: 10px;
+  background-color: #FFF;
+  color: #333;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+.commonParams legend {
+  background: url(../images/green-grad.gif) repeat-x scroll #cdeb8c top;
+  border: 1px solid #aacf58;
+}
+.optionalParams legend {
+  background: url(../images/blue-grad.gif) repeat-x scroll #96cfe1 top;
+  border: 1px solid #64acc3;
+}
+.systemParams legend {
+  background: url(../images/red-grad.gif) repeat-x scroll #D8A7A8 top;
+  border: 1px solid #DD575A;
+}
+.otherParams legend {
+  background: url(../images/yellow-grad.gif) repeat-x scroll #e1cf96 top;
+  border: 1px solid #c3ac64;
+}
+.languageParams legend {
+  background: url(../images/gray-grad.gif) repeat-x scroll #ccc top;
+  border: 1px solid #999;
+}
+.languageParams.type_01 legend {
+  background: url(../images/gray-grad.gif) repeat-x scroll #ccc top;
+  border: 1px solid #CBAD70;
+}
+.languageParams.type_02 legend {
+  background: url(../images/gray-grad.gif) repeat-x scroll #ccc top;
+  border: 1px solid #57B04A;
+}
+.languageParams.type_03 legend {
+  background: url(../images/gray-grad.gif) repeat-x scroll #ccc top;
+  border: 1px solid #53A4BB;
+}
+
+.formElementBinder {
+  padding: 3px;
+  text-align: left;
+  width: 98%;
+  display: block;
+  clear: both;
+  margin: 0.5em 0 1.3em 1.0em;
+}
+.formElementBinder label {
+  font-size: 1.1em;
+  font-weight: normal;
+  color: #333;
+  text-align: left;
+  width: 30%;
+  max-width: 220px;
+  height: auto;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  display: inline;
+  clear: none;
+  position: relative;
+  float: left;
+  line-height: 14px;
+}
+
+.commonParams .form_element, .languageParams .form_element, .optionalParams .form_element, .systemParams .form_element {
+  display: inline-block;
+  text-align: left;
+  clear: right;
+  position: relative;
+  height: auto;
+  padding: 0 0 0 0;
+}
+
+.commonParams div.form_element.check_box, .languageParams div.form_element.check_box, .systemParams div.form_element.check_box, .optionalParams div.form_element.check_box {
+  height: 22px;
+  display: inline;
+  clear: none;
+  position: relative;
+  float: left;
+  margin: 0 5px 0 8px;
+  padding: 0 0 0 0;
+}
+
+.formElementBinder.tags {
+  border: 1px dotted #CCC;
+  width: auto;
+  background-color: #F7F7F7;
+  height: 18px;
+  float: left;
+  clear: none;
+  white-space: nowrap
+}
+.formElementBinder.tags label {
+  margin: 2px 3px 2px 2px;
+  font-size: 10px;
+  width: auto;
+  float: right;
+}
+.formElementBinder.tags .form_element {
+  float: left;
+  width: 20px;
+}
+
+.commonParams div.example, .languageParams div.example, .optionalParams div.example, .systemParams div.example {
+  font-size: 1.0em;
+  line-height: 1.0em;
+  color: #999999;
+  display: block;
+  float: left;
+  height: auto;
+  white-space: normal;
+  text-align: left;
+  clear: both;
+  padding: 0 0 0 0;
+  margin: 3px 0 3px 0;
+}
+
+.commonParams  div.example.check_box, .languageParams div.example.check_box, .optionalParams div.example.check_box, .systemParams div.example.check_box {
+  font-size: 10px;
+  height: auto;
+  display: block;
+  text-align: left;
+  clear: both;
+  position: relative;
+  padding: 0 0 0 0;
+  margin: -18px 0 0 220px;
+}
+
+.commonParams  div.example.none, .languageParams div.example.none, .optionalParams div.example.none, .systemParams div.example.none {
+  font-size: 10px;
+  height: auto;
+  display: block;
+  text-align: left;
+  clear: both;
+  position: relative;
+  padding: 0 0 0 0;
+  margin: -18px 0 0 200px;
+  width: 0px !important;
+}
+
+.form_element input[type="text"], .form_element input[type="password"], .form_element select, .form_element textarea, .form_element .fieldWithErrors input[type="text"], .form_element .fieldWithErrors input[type="password"], .form_element .fieldWithErrors select, .form_element .fieldWithErrors textarea {
+  font-weight: normal;
+  color: #333333;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  height: 1.6em;
+  border: 1px solid #AAA;
+  padding: 1px;
+}
+.form_element .fieldWithErrors input[type="text"], .form_element .fieldWithErrors input[type="file"], .form_element .fieldWithErrors input[type="password"], .form_element .fieldWithErrors select, .form_element .fieldWithErrors textarea, .form_element .fieldWithErrors select {
+  border-color: #C00;
+}
+
+.form_element .fieldWithErrors input, .form_element .fieldWithErrors textarea, .form_element .fieldWithErrors select {
+  border: 1px solid #C30;
+}
+.form_element .fieldWithErrors select {
+  height: 20px;
+}
+.form_element input[type="text"]:focus, .form_element input[type="password"]:focus, .form_element textarea:focus, .form_element .fieldWithErrors input[type="text"]:focus, .form_element .fieldWithErrors input[type="password"]:focus, .form_element .fieldWithErrors textarea:focus {
+  border: 2px solid #0C0;
+  color: #000;
+  padding: 0px;
+}
+
+/*
+ .commonParams div.example, .languageParams div.example, .systemParams div.example, .optionalParams div.example, .commonParams div.form_element.check_box, .languageParams div.form_element.check_box, .optionalParams div.form_element.check_box, .commonParams .form_element, .languageParams .form_element, .optionalParams .form_element{width:220px;}
+ .form_element input[type="text"], .form_element input[type="password"], .form_element select,  .form_element textarea, .commonParams  div.example.check_box, .languageParams div.example.check_box, .optionalParams div.example.check_box, .form_element textarea{	width:210px;}
+ */
+.commonParams div.example, .languageParams div.example, .systemParams div.example, .optionalParams div.example, .commonParams div.form_element.check_box, .languageParams div.form_element.check_box, .optionalParams div.form_element.check_box, .commonParams .form_element, .languageParams .form_element, .optionalParams .form_element, .form_element select {
+  width: 85%;
+}
+.form_element input[type="text"], .form_element input[type="password"], .form_element select, .form_element textarea, .commonParams  div.example.check_box, .languageParams div.example.check_box, .optionalParams div.example.check_box, .form_element textarea, .form_element select {
+  width: inherit;
+}
+
+.commonParams div.example, .languageParams div.example, .systemParams div.example, .optionalParams div.example, .commonParams div.form_element.check_box, .languageParams div.form_element.check_box, .optionalParams div.form_element.check_box, .commonParams .form_element, .languageParams .form_element, .optionalParams .form_element, .form_element select {
+  font-size: 1.0em !important;
+  line-height: 1.1em !important;
+}
+.formButtons input {
+  font-size: 2em !important;
+  line-height: 2em !important;
+  width: 5em;
+  padding: 10px;
+  color: #333;
+}
+.form_element input[type="file"] {
+  width: 70%;
+}
+.form_element.no_example {
+  width: 20px !important;
+  display: inline-block;
+  clear: none;
+}
+.form_element select {
+  height: 1.8em;
+  line-height: 1.2em !important;
+  font-size: 1.2em !important;
+  padding: 0;
+}
+.form_element textarea {
+  color: #000000;
+  height: 60px;
+  line-height: 1.2em !important;
+  font-size: 1.2em !important;
+}
+.formButtons {
+  margin: 10px 0px;
+  text-align: center;
+  width: 100%;
+  float: left;
+}
+
+.quickSearchField {
+  width: 200px;
+  font-size: 1.4em;
+}
+
+#toolbar .ui-button-text-only .ui-button-text, #offer_open ui-button-text-only .ui-button-text {
+  padding: 0.4em 0.9em;
+}
+#toolbar input.ui-button, #offer_open input.ui-button {
+  padding: 0.4em 0.8em 0.4em 0.8em;
+}
+#toolbar label{
+  font-size: 1.1em;
+}
+.ui-buttonset .ui-button {
+  margin-left: 0;
+  margin-right: -0.35em;
+}
+#offer_open {
+  float: right;
+  width: auto;
+  margin: 0 0 15px 0;
+}
+
+#offer_open input[type="text"] {
+  width: 80px;
+  color: #666;
+  vertical-align: top;
+}
+#offer_open input[type="submit"], #toolbar input[type="submit"] {
+  font-weight: bold;
+}
+#toolbar input[type="text"] {
+  width: 8em;
+}
+#toolbar {
+  float: left;
+  max-width: 85%; /* margin: 0 0 15px 0;  font: 9px "Trebuchet MS", sans-serif;*/
+}
+#toolbar div, #toolbar select {
+  display: inline-block;
+  clear: none;
+}
+#toolbar select {
+  text-align: left;
+  position: relative;
+  padding: 3px 3px 3px 2px;
+}
+/*#toolbar select{ text-align:left;  position:relative; padding:5px 5px 6px 3px; text-transform:capitalize }*/
+#toolbar select option {
+}
+#toolbar select:focus {
+  border: 1px solid #aaaaaa;
+  background: #ffffff url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x;
+  font-weight: normal;
+  color: #212121;
+}
+#toolbar input, #offer_open input {
+  height: 1.7em !important;
+  font-size: 1.0em;
+}
+#offer_open input[type="text"] {
+  margin: 0.2em 0em;
+  height: 1.8em !important;
+}
+
+#toolbar select, #offer_open select{
+  height: 2.0em !important;
+  font-size: 1.0em;
+}
+#toolbar input[type="submit"], #offer_open input[type="submit"]{
+  height: auto !important;
+  font-size: 1.0em;
+}
+#toolbar input[type="submit"]{
+  margin-top: -2px;
+}
+
+#credits_container {
+  text-align: center;
+  margin: 20px auto;
+  display: block;
+  font-size: 11px;
+  color: #666;
+  font-weight: normal;
+  padding: 3px;
+}
+#credits_container a {
+  font-size: 1em !important;
+  color: #666;
+  font-weight: normal;
+  text-decoration: none;
+  text-shadow: #ccc 1px 1px 1px;
+}
+#credits_container a:hover {
+  color: #333;
+  text-decoration: none;
+}
+.transfers_table select {
+  width: 95%;
+}
+ul.userSort {
+  margin: 10px;
+  padding: 0;
+  width: inherit;
+}
+ul.userSort li {
+  list-style: none;
+  display: block;
+  line-height: 20px;
+  border: 1px solid #CCC;
+  background-color: #F9F9F9;
+  margin-bottom: 3px;
+  padding: 0 5px;
+  cursor: move;
+}
+.noStyle, .noStyle td, .noStyle tr {
+  border-style: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+#show_product, #add_items, #edit_item, #transfer_items, #deliver_items, #sale_item, #exchange_items, #multi_edit_price, #update_request, #request_items {
+  display: none;
+}
+
+#show_offer h1 {
+  margin: 5px 0 10px 0;
+}
+#show_offer h2 {
+  text-indent: 0;
+  color: #333;
+  display: block;
+  float: none;
+  background-image: none;
+  background-color: transparent;
+  border-style: none;
+  margin: 0 0 5px 0;
+  padding: 0;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  line-height: 24px;
+  font-weight: bold;
+  font-size: 20px;
+}
+#show_offer h2 .initial_price {
+  color: #666;
+  text-decoration: line-through;
+  font-size: 15px;
+  font-weight: normal;
+  margin-left: 20px
+}
+#show_offer h3 {
+  margin: 0 0 5px 0;
+  font-size: 15px;
+}
+#show_offer h4 {
+  margin: 0 0 5px 0;
+}
+#show_offer p {
+  text-align: justify;
+}
+#show_offer ul {
+  padding-left: 25px;
+  list-style: circle;
+}
+#show_offer .P {
+  margin: 10px 0 10px 10px;
+}
+#show_offer .bonsaiShowPhotos img {
+  padding: 2px;
+  border: 1px solid #EEE;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+input#offer_picture_pic {
+  display: block;
+}
+a.attachmentLink {
+  font-size: 10px !important;
+  color: #06F !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  padding-left: 16px;
+  margin-left: 10px;
+  background-position: center left;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url(../images/attachment_16x16.png);
+}
+.translateForm {
+  font-size: 12px;
+  color: #006;
+  border: 1px dotted #CCC;
+  background-color: #F9F9F9;
+  padding: 10px;
+  color: #333;
+}
+.translateForm label {
+  float: left;
+  clear: both;
+  font-size: 12px;
+  margin: 5px 0 0 0;
+}
+.translateForm label.separator {
+  display: block;
+  width: 100%;
+  border-bottom: 1px dotted #CCC;
+  margin: 15px 0 5px 0;
+}
+.translateForm span {
+  display: inline-block;
+  width: 120px;
+  vertical-align: top;
+  color: #000;
+  font-weight: bold;
+}
+.translateForm p {
+  display: inline-block;
+  width: 620px;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-style: italic;
+}
+.translateForm textarea, .translateForm input[type="text"] {
+  width: 610px;
+  display: inline;
+  font-size: 11px;
+}
+.translateForm textarea {
+  height: 100px;
+}
+.printOffer a {
+  border-style: solid;
+  border-width: 1px;
+  border-top-color: #EAEAEA;
+  border-right-color: #BFBFBF;
+  border-left-color: #EAEAEA;
+  border-bottom-color: #BFBFBF;
+  background-color: #FFF;
+  text-decoration: none;
+  color: #666;
+  font-size: 12px;
+  text-transform: lowercase;
+  padding: 1px 5px 3px 5px;
+}
+.printOffer a:hover {
+  background-color: #F3F3F3;
+}
+.printOffer {
+  margin-top: 20px;
+  text-align: center;
+  float: right;
+  margin: 0 9px 15px 0;
+}
+.forumName {
+  float: left;
+  width: inherit;
+  padding: 10px;
+}
+.forumName span {
+  margin: 0 10px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #999;
+}
+.forumName a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #333
+}
+.noDisplay {
+  display: none;
+}
+#go_back_toobar {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+}
+#go_back_toobar ul {
+  padding: 0;
+  margin: 0;
+}
+#go_back_toobar ul li.separator {
+  background-image: none;
+  display: inline;
+  padding: 0 0 5px 0;
+  margin: 0 0 0 5px;
+  text-align: left;
+  color: #999;
+  font-size: 11px;
+  line-height: 19px;
+  font-weight: normal;
+}
+#go_back_toobar ul li {
+  background-image: none;
+  display: inline;
+  padding: 0 0 5px 0;
+  margin: 0 0 0 5px;
+  text-align: left;
+  color: #888;
+  font-size: 10px;
+  line-height: 20px;
+  font-weight: normal;
+}
+#go_back_toobar ul li.separator {
+  color: #999;
+  font-size: 11px;
+  line-height: 19px;
+  font-weight: normal;
+}
+#go_back_toobar ul li a {
+  font-size: 10px;
+  color: #666;
+  text-decoration: none;
+  padding-bottom: 1px;
+  border-bottom: 1px dotted #CCC;
+  text-shadow: #ccc 1px 1px 2px;
+}
+#go_back_toobar ul li a:hover {
+  color: #21ab01;
+}
+.forumPosts .fpostDate {
+  font-size: 8px !important;
+  color: #999;
+  padding: 3px 0 0 10px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+.forumPosts .fpostDate a {
+  color: #999 !important;
+}
+.forumPosts .fpostDate a:hover {
+  color: #090 !important;
+}
+.forumPosts p {
+  font-size: 12px;
+  color: #333;
+  margin: 0;
+  padding: 5px 10px 10px 10px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+#dashboard .forumPosts  p {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 3px 10px 5px 10px;
+}
+#dashboard .forumPosts  p a {
+  font-size: 11px;
+}
+.forumPosts .listBody td {
+  border-width: 0 0 1px 0;
+  border-style: dashed;
+  color: #CCC;
+  vertical-align: top;
+}
+.forumPosts .listBody tr.noBottomBorder td {
+  border-bottom-style: none !important;
+}
+.forumPosts .avatar {
+  width: 50px;
+  padding: 10px 5px;
+}
+.forumPosts tbody.scrollable {
+  max-height: 147px !important;
+  overflow: auto !important;
+  position: relative;
+  float: left;
+  width: 978px;
+  margin: 0;
+  padding: 0;
+}
+.forumPosts tbody.scrollable p {
+  width: 885px;
+}
+#dashboard .forumPosts .avatar {
+  padding: 5px 0;
+}
+.forumPosts .avatar img {
+  padding: 1px;
+  border: 1px solid #CCC;
+  width: 26px;
+  height: 35px;
+}
+#dashboard .contentWrapper {
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+#dashboard table {
+  margin: 0 5px;
+  width: 99% !important;
+}
+#dashboard h2 {
+  margin-bottom: 0px !important;
+}
+#show_offer_mail_send label {
+  width: 100%;
+  display: block;
+  height: auto;
+  margin-bottom: 10px;
+}
+#show_offer_mail_send input, #show_offer_mail_send label textarea {
+  clear: both;
+  display: block;
+  width: 100%;
+}
+#show_offer_mail_send #offer_mail_offer_id {
+  border: 1px solid #FFF;
+  font-weight: bold;
+  clear: none;
+  width: 100px;
+  display: inline;
+}
+.characterCounter {
+  font-size: 9px;
+  color: #060;
+}
+#client_searches_count_display {
+  position: absolute;
+  z-index: 999;
+  right: -3px;
+  top: -5px;
+  background-color: #C00;
+  color: #FFF;
+  font-size: 9px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2px 3px 1px 2px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  visibility: hidden;
+  text-align: center;
+  border: 1px solid #F8F8F8;
+  text-shadow: #ccc 1px 1px 1px;
+  min-width: 9px;
+  min-height: 9px;
+}
+tr.has_client_search_hits td {
+  color: #060 !important;
+  font-style: bold !important;
+  cursor: help;
+}
+.ui-helper-hidden-accessible {
+  position: absolute;
+  left: -99999px;
+}
+.searchCount {
+  background-color: #E3E3E3;
+  border: 1px outset #EEEEEE;
+  display: block;
+  padding: 3px 0;
+  text-decoration: none;
+  width: 24px;
+}
+.mainPhoto img {
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.modalInspector label {
+  font-weight: normal;
+  width: 8em;
+  float: left;
+  line-height: 1.2em;
+}
+.modalInspector .formElementBinder {
+  margin: 0.5em 0 0.5em 0em;
+}
+.modalInspector .formElementBinder label {
+  line-height: 2em;
+  width: 10em;
+}
+.modalInspector .formElementBinder .ui-state-error {
+  border-color: #CD0A0A;
+}
+.modalInspector .formElementBinder select {
+  width: 135px;
+}
+.modalInspector .formElementBinder input, .modalInspector .formElementBinder textarea  {
+  width: 130px;
+}
+.modalInspector .ui-dialog .ui-state-error {
+  padding: .3em;
+}
+.modalInspector .formHolder {
+  width: 49%;
+  float: left;
+}
+.modalInspector .validateTips {
+  border: 1px solid transparent;
+  padding: 0.3em;
+  font-size: 0.9em;
+  float: right;
+  width: 49%;
+  color: firebrick;
+}
+.modalInspector .dialogFormMessage > div {
+  position: absolute;
+  width: 90%;
+  box-shadow: #CCC 4px 5px 15px;
+  opacity: 0.95;
+  padding: 12px 15px !important;
+  font-size: 1.2em;
+}
+
+.detailsHeader th, .detailsHeader td {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 1.1em;
+  padding: 5px 4px 0 3px;
+}
+.detailsHeader td {
+  font-weight: bold;
+}
+.detailsHeader th {
+  font-weight: normal;
+  text-align: left;
+  width: 9.5em;
+}
+
+.itemsBlockList select {
+  font-size: 0.85em;
+  font-weight: normal;
+  line-height: 1.2em;
+  width: 134px;
+  height: 46px;
+}
+td.itemNotes, .itemNotes {
+  max-height: 35px;
+  overflow: auto;
+  display: block
+}
+
+.disabledFormElement {
+  border-style: none !important;
+}
+
+.ui-state-success,
+.ui-widget-content .ui-state-success,
+.ui-widget-header .ui-state-success {
+  border: 1px solid #10C700;
+  background: #FAFFF0 url(smoothness/images/ui-bg_glass_55_fbf9ee_1x400.png) 50% 50% repeat-x;
+  color: #0F8000;
+}
+.ui-state-success a,
+.ui-widget-content .ui-state-success a,
+.ui-widget-header .ui-state-success a {
+  color: #363636;
+}
+.ui-state-success .ui-icon {
+  background-image: url(smoothness/images/ui-icons_15ac0a_256x240.png);
+}
+#ui-datepicker-div {
+  font-size: 1.5em;
+}
+#color_example{
+  width: 135px;
+  float: left;
+  height: 1em;
+  margin-top: .2em;
+  border-bottom: 0.7em inset;
+}
+
+.colorPreview{
+  border-bottom: 0.7em inset;
+  padding: .5em 0em .1em;
+  width: 130px;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  display: table;
+  margin: 0px auto;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 1px 1px 4px gray;
+  white-space: nowrap;
+}
+#modalDialogForm .colorPreview{
+  margin: 0px;
+}
+
+.statistics .colorPreview{
+  padding: .5em 0em .1em;
+  margin: 0px;
+  box-shadow: none;
+  width: 100%;
+  height: 100%;
+}
+.colorPreviewContainer{
+  padding:0px !important;
+}
+
+
+#salesStatus {
+  text-shadow: #DDD 3px 3px 5px;
+  margin: 0;
+  padding: 10px 15px;
+  color: #1B81BB;
+}
+#salesStatus td{
+  font-size: 1.5em;
+}
+#salesStatus .salesStatusAmounts{
+  text-align:left;
+  min-width: 50px;
+} 
+#salesStatus .salesStatusAmounts span{
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#help_container {
+    font-size: 1.1em;
+    margin: 1em;
+}
+#help_container h1{
+    font-size: 2em !important;
+    text-shadow: #DDD 3px 3px 5px;
+    color: #1B81BB;
+}
+
+#help_container h3 {
+    font-size: 1.7em !important;
+    font-weight: bold  !important;
+    padding: .5em 0em .0em  !important;
+}
+#help_container h4 {
+    font-size: 1.2em !important;
+}
+#help_container p {
+    white-space: normal;  
+}
+#help_container p strong {
+    font-size: .98em;  
+}
+#help_container a {
+    text-decoration: none;
+}
+#help_container a:hover {
+    color: #1B81BB;
+}
+#help_container li {
+    height: 2em;
+}
+
+#help_container .helpImage {
+    clear: both;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    width: 90%;
+}
+
+#help_container .helpImage img{
+  box-shadow: 0.5em 0.5em 3em #CCC;
+}
+

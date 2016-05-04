@@ -1,0 +1,24 @@
+    <script type="text/javascript">
+      $(window).load(function() {
+        $("#date_from").datepicker();
+        $("#date_to").datepicker();  
+      }); 
+    </script>
+    
+  <form id="productListForm">
+    <div id="toolbar" class="grid_5 alpha">
+      <label for="date_from">От:</label>
+      <input name="date_from" id="date_from" type="text" class="ui-state-active ui-corner-all" value="<%= @date_from%>"/>
+      <label for="date_to">До:</label>
+      <input name="date_to" id="date_to" type="text" class="ui-state-active ui-corner-all" value="<%= @date_to%>"/>  
+      <% if has_role?("manager")%>   
+        <%= select_tag("location_id", "<option value="">[Обект]</option>" + options_from_collection_for_select(@locations_select_list, :id, :alias, @location_id.to_i), :class => "ui-state-active ui-corner-all", :style=> "width:auto")%>
+      <%end%>
+      <input type="submit" value="Филтър"/>
+    </div>
+    <script type="text/javascript">
+      $(function() {
+        $("input:submit", "#toolbar").button();
+      }); 
+    </script>
+  </form>

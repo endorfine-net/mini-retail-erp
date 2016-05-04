@@ -1,0 +1,23 @@
+ru:
+  hello: "Здраствуи мир!"
+  authlogic:
+    error_messages:
+      login_blank: "Въведете email"
+      login_not_found: "Невалиден email или парола"
+      login_invalid: "should use only letters, numbers, spaces"
+      consecutive_failed_logins_limit_exceeded: "Consecutive failed logins limit exceeded, account is disabled."
+      email_invalid: "Въведете валиден email"
+      password_blank: "Не може да бъде празна"
+      password_invalid: "Невалидна парола"
+      not_active: "Не активен акаунт"
+      not_confirmed: "Your account is not confirmed"
+      not_approved: "Your account is not approved"
+      no_authentication_details: "Въведете email и парола."
+    models:
+      user_session:    
+    attributes:
+      user_session:
+        login: ""
+        email: ""
+        password: "Парола:"
+        remember_me: "Запомни ме"

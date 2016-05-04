@@ -1,0 +1,38 @@
+
+<div class="contentWrapper">
+       <h2>
+			 <%= link_to image_tag("/images/icon-add.png", :height => '32', :width => '32', :alt => "Добави нов цвят", :title => "Добави нов цвят", :border =>'0'), url_for(:action => 'new') %>
+			 Списък с "<strong>Цветове</strong>"</h2>
+            <table cellpadding="2" cellspacing="0" border="0" class="bonsaiTable ui-corner-all noBackground" id="productList">
+              <thead>
+                <tr class="columnHeads">
+                  <th class="ID"><a href="#">&nbsp;ID&nbsp;&nbsp;</a></th>
+                  <th>Име</th>
+                  <th>Код</th>
+                  <th>Основен цвят</th>
+                  <th>Допълнителен цвят</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody  class="listBody">
+                <% @colors.each do |color| %>
+                <tr>
+                  <td align="CENTER"><%=color.id -%></td>
+                  <td align="CENTER"><%=color.alias -%></td>
+                  <td align="CENTER"><%=color.code -%></td>
+                  <td align="CENTER" style="background-color:#<%=color.primary -%>; width: 3em">&nbsp;</td>
+                  <td align="CENTER" style="background-color:#<%=color.secondary unless color.secondary.blank? -%>; width: 3em">&nbsp;</td>
+                  <td align="CENTER" class="tools" style="width: 30px">
+                    <div class="tableButtonsWrapper">
+                      <%= link_to image_tag("/images/icon-edit.png", :height => '24', :width => '24', :alt => "Редакция", :title => "Редакция",:border =>'0'), url_for(:action => 'edit', :id => color) %>
+                    </div>
+                  </td>
+                </tr>
+                <%end%>
+              </tbody>
+            </table>
+            <script type="text/javascript">
+								transform_table_list("<%=self.controller_name%>","<%=self.action_name%>");
+            </script>
+          </div>
+<br />

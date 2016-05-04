@@ -1,0 +1,113 @@
+<!--<div class="ui-tabs-panel ui-widget-content ui-corner-bottom">-->
+          <div class="contentWrapper">
+            <h2><%= link_to image_tag("/images/bonsai/icon-add.png", :height => '32', :width => '32', :alt => "Добави нов запис", :title => "Добави нов запис", :border =>'0'), url_for(:action => 'new') %> Списък с "<strong><%=title%></strong>"</h2>
+<%if controller.controller_name == "projects"%>
+<div id="toolbar">
+	<form>			
+		<div id="statuses">
+			<input type="radio" id="1" value="active" name="type" <%="checked" if (@type == "active")%>/><label for="1" title="Активни">Активни</label>
+			<input type="radio" id="2" value="not_active" name="type" <%="checked" if (@type == "not_active")%>/><label for="2" title="Неактивни">Неактивни</label>
+			<input type="radio" id="3" value="archive" name="type" <%="checked" if (@type == "archive")%>/><label for="3" title="Архив">Архив</label>
+			
+		</div>                   
+		<input type="submit" value="филтър"/>
+	</form>
+</div>
+<script type="text/javascript">
+$(function(){		   
+				$("#statuses").buttonset();	
+				$("input:submit", "#toolbar").button();				
+   });
+</script>
+<%end%>
+            <table cellpadding="2" cellspacing="0" border="0" class="bonsaiTable ui-corner-all" <%if controller.controller_name == "projects"%>id="offersList"<%else%>id="tableList"<%end%>>
+              <thead>
+				<tr>
+                  <td colspan="3">				  
+					<table border="0" cellpadding="0" class="headerElements">
+					  <tr>				
+					 <td class="filter" nowrap="nowrap" valign="top"><!--<div class="buttonHolder"><a href="javascript:;"><img src="/images/bonsai/brush3.png" alt="Изчистване на бързо търсене" name="filterClearTwo" width="24" height="24" id="filterClear" title="Изчистване на бързо търсене" border="0" /></a> </div>-->
+						<form action="">						
+						<div style="float:right">Бързо търсене:
+
+						  <input id="filterBox" name="name" value="" type="text" />
+
+						</div>
+						</form>						
+					</td>
+				  </tr>
+				</table>		  
+				  </td>
+                </tr>	
+                <tr class="columnHeads">	
+                  <th <%=sort_th "id"%>><%=sort_link("&nbsp;ID&nbsp;&nbsp;", controller.action_name, "id", params.merge(:action => self.action_name))%></th>
+                  <th <%=sort_th "alias"%>><%=sort_link("&nbsp;Служебно име&nbsp;", controller.action_name, "alias", params.merge(:action => self.action_name))%></th>
+                  <th class="tools">&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody  class="listBody">
+                <% results.each do |res| %>
+                <tr rel="<%=res.id%>">
+                  <td align="CENTER"><%=res.id%></td>
+                  <td align="CENTER"><%=res.city_group.alias if (res.class.to_s =="City" && !res.city_group.blank?) -%> <%=res.alias -%> 
+				<%if res.respond_to?('city')-%>&nbsp;<%="(#{res.city.alias})" if !res.city.blank?-%><%end-%>
+				<%if res.respond_to?('offers')-%>&nbsp;<%="(Оферти: #{res.offers.count})" -%><%end-%>
+				<%if res.respond_to?('projects')-%>&nbsp;<%="(Проекти: #{res.projects.count})" -%><%end-%>				
+				  </td>
+                  <td align="CENTER" class="tools" <%if has_role?("admin") || ((current_user.department_id.to_i == res.user.department_id.to_i) && is_department_admin?)%><%if controller.controller_name == "projects"%><%if !@type.nil? && @type == "archive"%>style="width:45px"<%else%>style="width:135px"<%end%><%end%><%elsif (current_user.id.to_i == res.user_id.to_i)%>style="width:135px"<%end%>>
+                    <div class="tableButtonsWrapper">
+						<%if controller.controller_name == "projects" %>
+							<%= link_to_remote(image_tag("/images/bonsai/icon-offer-show.png", :height => '24', :width => '24', :alt => "Преглед", :title => "Преглед", :border =>'0', :class=>"showOffer", :style=>"display:none"), :url => bonsai_project_path(res.id), :update => "show_offer", :method => :get)%>
+						<%end%>
+						<%if (is_department_admin? && !res.user.blank?)%>		
+							<%= render(:partial => 'bonsai/shared/cms_table_wp_actions', :locals => {:res => res}) if current_user.department_id.to_i == res.user.department_id.to_i%>             						
+						<%elsif controller.controller_name == "projects" && !res.user.blank? && !has_role?("admin")%>
+							<%= render :partial => 'bonsai/shared/cms_table_wp_actions', :locals => {:res => res} if current_user.id.to_i == res.user_id.to_i%>
+						<%else%>
+							<%= render(:partial => 'bonsai/shared/cms_table_wp_actions', :locals => {:res => res}) if has_role?("admin")%>
+						<%end%>
+						<%if controller.controller_name == "projects" && @status_id !=3%>																																																																																																																																																							
+							<a href="<%=project_url%><%=res.id%>" target="_blank"><img src="/images/bonsai/icon-webview.png" border="0" alt="Преглед на сайта" title="Преглед на сайта"></a>
+						<%end%>
+
+                    </div>
+                  </td>
+                </tr>
+                <%end%>
+              </tbody>
+              <tfoot>
+                <tr id="toolBoxTablePagination">
+					<td colspan="4" valign="top">
+						<%=will_paginate results, 
+							:prev_label => image_tag("/images/bonsai/prev.png", :alt => "Предишна", :border =>'0', :class => 'prev'), 
+							:next_label =>image_tag("/images/bonsai/next.png", :alt => "Следваща", :border =>'0', :class => 'next'),
+							:page_links     => true,
+							:inner_window   => 1,
+							:outer_window	=> 1,
+							:container      => false
+					 	-%>
+                   <select class="pagesize">
+                      <option selected="selected"  value="10">10</option>
+                      <option value="20">20</option>
+                      <option value="30">30</option>
+                      <option  value="40">40</option>
+                    </select></td>
+                </tr>
+              </tfoot>
+            </table>
+					 <script type="text/javascript">
+					 <%if controller.controller_name == "projects"%>
+					 		make_projectsList_tr_clickable();
+							$("#offersList").tablesorter({ debug: false,  widgets: ['zebra'], headers: {0:{sorter: false}, 1:{sorter: false}, 2:{sorter: false}} });
+						<%else%>
+							make_tableList_tr_clickable();
+							$("#tableList").tablesorter({ debug: false,  widgets: ['zebra'], headers: {0:{sorter: false}, 1:{sorter: false}, 2:{sorter: false}} });
+						<%end%>
+            	
+							
+            </script>		
+			
+          </div>
+<br />
+
+<!--</div>-->

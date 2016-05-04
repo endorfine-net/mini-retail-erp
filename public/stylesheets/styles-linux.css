@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+body, label, legend, .example, input, textarea, select, h1, h2, h3, .subnavHolder, .widgetHolder, .widgetbar, .subnav, .form_element select, .form_element input[type="text"], .form_element input[type="password"], .form_element textarea{
+	font-family:Arial, Helvetica, sans-serif;
+	}
+

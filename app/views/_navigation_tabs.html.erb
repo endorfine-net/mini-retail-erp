@@ -1,0 +1,119 @@
+<%
+   active_tab = "ui-corner-top ui-tabs-selected ui-state-active ui-state-focus"
+   not_active_tab = "ui-corner-top ui-state-default"
+   disabled_tab = "ui-corner-top ui-state-default ui-state-disabled"
+
+   acontroller = self.controller_name
+   aaction = self.action_name
+
+   if (acontroller == "home" && aaction == "index")
+     tab_home = active_tab
+   elsif (acontroller == "users")
+     tab_users = active_tab
+   elsif (acontroller == "products" && aaction == "sales")
+     tab_sales = active_tab
+   elsif (acontroller == "products" && aaction == "my_store")
+     tab_my_store = active_tab
+   elsif (acontroller == "products" && aaction == "stores")
+     tab_stores = active_tab
+   elsif (acontroller == "products" && aaction == "inventory")
+     tab_inventory= active_tab
+   elsif (acontroller == "products" && aaction == "new")
+     tab_inventory = active_tab
+   elsif (acontroller == "products" && aaction == "edit")
+     tab_inventory = active_tab
+   elsif (acontroller == "products" && aaction == "statistics")
+     tab_statistics = active_tab
+   elsif (acontroller == "requests" && aaction == "index")
+     tab_requests = active_tab
+   elsif (acontroller == "logs" && aaction == "transfers")
+     tab_transfers = active_tab
+   elsif (acontroller == "logs" && aaction == "my_transfers")
+     tab_transfers = active_tab
+   elsif (acontroller == "logs" && aaction == "index")
+     tab_logs = active_tab
+   elsif (acontroller == "logs" && aaction == "my_location")
+     tab_logs = active_tab
+   elsif (acontroller == "colors")
+     tab_colors = active_tab
+   elsif (acontroller == "documents")
+     tab_documents = active_tab
+   else
+     tab_my_store = active_tab
+   end
+
+%>
+
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+
+  <% if has_permissions?("products", "sales") %>
+      <li class="<%= tab_sales ||= not_active_tab %>">
+        <%= link_to("Продажби", :controller => "sales") -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("products", "my_store") %>
+      <li class="<%= tab_my_store ||= not_active_tab %>">
+        <%= link_to("Моят обект", :controller => "my_store") -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("products", "my_store") %>
+      <li class="<%= tab_stores ||= not_active_tab %>">
+        <%= link_to("Всички обекти", :controller => "stores") -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("products", "inventory") %>
+      <li class="<%= tab_inventory ||= not_active_tab %>">
+        <%= link_to("Инвентар", :controller => "inventory") -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("requests", "index") %>
+      <li class="<%= tab_requests ||= not_active_tab %>">
+        <%= link_to("Заявки", :controller => "requests", :action => "index") -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("logs", "transfers") %>
+      <li class="<%= tab_transfers ||= not_active_tab %>">
+        <%= link_to("Доставки", :controller => "logs", :action => "transfers") -%>
+      </li>
+  <% else %>
+      <li class="<%= tab_transfers ||= not_active_tab %>">
+        <%= link_to("Доставки", :controller => "logs", :action => "my_transfers") -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("products", "statistics") %>
+      <li class="<%= tab_statistics ||= not_active_tab %>">
+        <%= link_to("Статистика", :controller => "statistics") -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("logs", "index") %>
+      <li class="<%= tab_logs ||= not_active_tab %>">
+        <%= link_to("Логове", :controller => "logs") -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("colors", "index") %>
+      <li class="<%= tab_colors ||= not_active_tab %>">
+        <%= link_to("Цветове", :controller => "colors") -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("users", "index") %>
+      <li class="<%= tab_users ||= not_active_tab %>" style="float:right">
+        <%= link_to("Потребители", users_url) -%>
+      </li>
+  <% end %>
+
+  <% if has_permissions?("documents", "index") %>
+      <li class="<%= tab_documents ||= not_active_tab %>" style="float:right">
+        <%= link_to("Help", documents_url) -%>
+      </li>
+  <% end %>
+
+</ul>

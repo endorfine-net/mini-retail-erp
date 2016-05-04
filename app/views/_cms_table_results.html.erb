@@ -1,0 +1,69 @@
+<!--<div class="ui-tabs-panel ui-widget-content ui-corner-bottom">-->
+          <div class="contentWrapper">
+            <h2>
+			 <%= link_to image_tag("/images/icon-add.png", :height => '32', :width => '32', :alt => "Добави нов запис", :title => "Добави нов запис", :border =>'0'), url_for(:action => 'new') %>
+			 Списък с "<strong><%=title%></strong>"</h2>
+            <table cellpadding="2" cellspacing="0" border="0" class="bonsaiTable ui-corner-all" id="tableList">
+              <thead>
+                <tr>
+                  <td colspan="3">				  
+					<table border="0" cellpadding="0" class="headerElements">
+					  <tr>				
+					 <td class="filter" nowrap="nowrap" valign="top"><div class="buttonHolder"><a href="javascript:;"><img src="/images/brush3.png" alt="Изчистване на бързо търсене" name="filterClearTwo" width="24" height="24" id="filterClear" title="Изчистване на бързо търсене" border="0" /></a> </div>
+						<div style="float:right">Бързо търсене:
+						  <input id="filterBox" value="" type="text" />
+						</div>
+					</td>
+				  </tr>
+				</table>		  
+				  </td>
+                </tr>	
+                <tr class="columnHeads">
+                  <th class="ID"><a href="#">&nbsp;ID&nbsp;&nbsp;</a></th>
+                  <th><a href="#">Служебно име</a></th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody class="listBody">
+                <% results.each do |res| %>
+                <tr>
+                  <td align="CENTER"><%=res.id%></td>
+                  <td align="CENTER"><%=res.alias-%>
+					<%if res.respond_to?('offers')-%>&nbsp;<%="(Оферти: #{res.offers.count})" -%><%end-%>
+					<%if res.respond_to?('users')-%>&nbsp;<%="(Потребители: #{res.users.count})" -%><%end-%>					
+				  </td>
+                  <td align="CENTER" class="tools">
+                    <div class="tableButtonsWrapper">
+                      <%= link_to image_tag("/images/icon-edit.png", :height => '24', :width => '24', :alt => "Редакция", :title => "Редакция",:border =>'0'), url_for(:action => 'edit', :id => res) %>
+                      <%= link_to image_tag("/images/icon-delete.png", :height => '24', :width => '24', :alt => "Изтриване", :title => "Изтриване", :border =>'0'), [:bonsai, res], :confirm => 'Сигурни ли, сте?', :method => :delete %>
+                    </div>
+                  </td>
+                </tr>
+                <%end%>
+              </tbody>
+              <tfoot>
+                <tr id="toolBoxTablePagination">
+                  <td colspan="3" valign="top"><img src="/images/first.png" class="first"/> <img src="/images/prev.png" class="prev"/>
+                    <input type="text" class="pagedisplay"/>
+                    <img src="/images/next.png" class="next"/> <img src="/images/last.png" class="last"/>
+                    <select class="pagesize">
+                      <option selected="selected"  value="10">10</option>
+                      <option value="20">20</option>
+                      <option value="30">30</option>
+                      <option  value="40">40</option>
+                    </select></td>
+                </tr>
+              </tfoot>
+            </table>
+						<input name="sort_direction" id="sort_direction" type="hidden" <%if !@sort_direction.blank?%>value="<%=@sort_direction%>"<%end%> />
+						<input name="sort_column" id="sort_column" type="hidden" <%if !@sort_direction.blank?%>value="<%=@sort_column%>"<%end%>/>
+						<input name="last_page" id="last_page" type="hidden" <%if !@sort_direction.blank?%>value="<%=@last_page%>"<%end%>/>
+						<input name="search_string" id="search_string" type="hidden" <%if !@search_string.blank?%>value="<%=@search_string%>"<%end%>/>
+             <script type="text/javascript">
+								transform_table_list("<%=self.controller_name%>","<%=self.action_name%>");
+            </script>
+          </div>
+
+<br />
+
+<!--</div>-->

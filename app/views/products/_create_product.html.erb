@@ -1,0 +1,5 @@
+<% form_tag url_for(:controller => 'products', :action => 'new'), :method => :get do -%>
+	<%=select_tag("offer_type_id", options_from_collection_for_select(@offer_types, :id, :alias)) -%>
+	<%=select_tag("realestate_type_id", options_from_collection_for_select(@realestate_types, :id, :alias)) -%>	
+	<%=image_submit_tag("/images/icon-add.png", :height => '32', :width => '32', :alt => "Добави нов запис", :title => "Добави нов запис", :border =>'0') -%>	
+<% end -%>

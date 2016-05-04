@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+.ss-form-container {
+ background-color:#fafafa; width:auto; padding:0px; margin: 0px; background-attachment:scroll; background-position:left bottom; background-image:url(../images/panel-form-background.jpg); background-repeat:repeat-x; -moz-border-radius: 5px; -webkit-border-radius: 5px; font-size:13px; font-family:Verdana, Geneva, sans-serif;}
+.ss-form-container p{ line-height:1px; font-size:1px;}
+.ss-choice-item {}
+.ss-form-input {}
+.g {}
+.ss-q-title { font-size:14px;}
+.ss-form-desc { color:#999; font-size:11px; font-weight:normal }
+.ss-q-help { color:#999; font-size:11px; font-weight:normal}
+.ss-q-long {max-width:90%}
+.ss-form-entry {}
+.ss-choices { margin:5px 0 !important; list-style:none; padding:0px;}
+.ss-powered-by {}
+.ss-powered-by a:link, .ss-powered-by a:visited {}
+.ss-required-asterisk {}
+label {	display:block; color:#666}
+ul label {	display:inline;}
+.ss-response-cell {}
+.ss-responses-header {}
+.ss-old-form-response {}
+.ss-scalerow {}
+.ss-leftlabel {	text-align:right;	padding-left:0}
+.ss-rightlabel {	text-align:left;	padding-right:0}
+.ss-form-title { color:#666; font-size:16px; text-shadow: #ccc 1px 1px 2px; margin:0px 0px 5px 0px;}
+small a {	color:#333}
+.ss-choice-item{ background-image:none !important; margin:0 1px 0 1px !important; padding:0 !important; font-size:11px; line-height:16px; vertical-align:top;}
+.ss-choice-item input[type="checkbox"]{paddin:0; margin:0;}
+h2.ss-section-title {	background-color:transparent}
+div.ss-submit div.ss-form-entry {	background:none;	border:none}
+.ss-footer, .ss-legal, .ss-terms{ display:none;}

@@ -1,0 +1,414 @@
+table.bonsaiTable {
+  margin-top: 15px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  border: solid 1px #ccc;
+  font-size: 1.0em;
+  float: left;
+  /*display:block;*/
+  clear: both;
+  background-color: #FFF;
+  margin: 0 0 15px 0;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  width: inherit;
+}
+.threeColumns table.bonsaiTable {/*width:575px;*/
+}
+.twoColumns table.bonsaiTable {/*width:775px;*/
+}
+.mergedColumns table.bonsaiTable {/*width:988px !important;*/
+}
+table.bonsaiTable {
+  width: 100%
+}
+
+table.bonsaiTable#tableList {
+}
+
+table.bonsaiTable table.headerElements {
+  float: right;
+  clear: none;
+}
+table.bonsaiTable table.headerElements tr:hover {
+  background-color: transparent;
+}
+
+table.bonsaiTable div.textOverflow {
+  width: 100px;
+  height: 28px;
+  white-space: normal;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: float;
+}
+table.bonsaiTable .tableButtonsWrapper {
+  white-space: normal;
+  float: right;
+  margin: 1px;
+  width: auto;
+  max-width: 60px;
+  text-align: right;
+}
+table.bonsaiTable .listPhotoDetails  .tableButtonsWrapper {
+  text-align: center;
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: 10px;
+}
+table.bonsaiTable .listPhotoDetails  .tableButtonsWrapper a:last-child{
+  float:right;
+}
+table.bonsaiTable .listPhotoDetails  .tableButtonsWrapper a:first-child{
+  float:left;
+}
+
+table.bonsaiTable .listPhotoDetails .tableButtonsWrapper a {
+  display: inline-block;
+  padding: 2px
+}
+table.bonsaiTable .tableButtonsWrapper img {
+  margin: 1px;
+}
+table.bonsaiTable .tableButtonsWrapper a {
+  display: block;
+  padding: 2px
+}
+table.bonsaiTable .tableButtonsWrapper a:hover {
+  border: 2px dotted #F90;
+  padding: 0px
+}
+
+.bonsaiTable td {
+  padding: 2px;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  white-space: normal;
+  height: 25px;
+  font-size: 1.1em;
+}
+.bonsaiTable td:last-child, .bonsaiTable th:last-child {
+  border-right: 0px none;
+}
+.bonsaiTable tr:last-child td {
+  border-bottom: 0px none;
+}
+
+table.bonsaiTable tr.even {
+  background-color: #fff;
+}
+table.bonsaiTable tr.odd {
+  background-color: #FAFAFA;;
+}
+table.bonsaiTable tr.inactive {
+  color: #2249A4;
+}
+table.bonsaiTable tr.archive {
+  color: #8C2426;
+}
+
+.bonsaiTable tr.highlight td {
+    background-color: #F5FCC4;
+}
+
+table.bonsaiTable th {
+  background: url('../images/sprite.png') repeat-x 0px 0px;
+  border-right: 1px solid #ccc;
+  padding: 4px;
+  height: auto;
+}
+
+table.bonsaiTable th a {
+  text-decoration: none;
+  text-align: center;
+  padding-right: 15px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #333;
+  background: url('../images/bg.gif') no-repeat right 50%;
+}
+
+table.bonsaiTable thead .headerSortUp, table.bonsaiTable thead .headerSortDown {
+  background: url('../images/sprite.png') repeat-x 0px -100px;
+}
+
+table.bonsaiTable .headerSortUp a {
+  background: url('../images/asc.gif') no-repeat right 50%;
+}
+table.bonsaiTable .headerSortDown a {
+  background: url('../images/desc.gif') no-repeat right 50%;
+}
+table.bonsaiTable tbody tr:hover {
+  background-color: #FCFFE1
+}
+
+table.bonsaiTable tfoot td {
+  border-top: 1px solid #ccc;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+table.bonsaiTable tfoot td .current{
+  color:#0066FF;
+}
+table.bonsaiTable thead tr.columnHeads {
+  background: url('../images/sprite.png') repeat-x 0px 5px;
+}
+
+table.bonsaiTable thead tr.columnHeads th.ID {
+  width: 60px;
+}
+table.bonsaiTable#tableList tbody td.tools {
+  width: 67px;
+  height: 30px;
+  text-align: center;
+}
+table.bonsaiTable#offerList tbody td.tools {
+  text-align: center;
+}
+table.bonsaiTable thead {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+table.bonsaiTable thead td {
+  vertical-align: middle;
+  border: none;
+}
+table.bonsaiTable {
+  background: url('../images/gray-grad-table-head.gif') repeat-x -20px -12px #f8f8f8
+}
+table.bonsaiTable .tableHeader {
+  font-size: larger;
+  font-weight: bold;
+}
+
+table.bonsaiTable .filter {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: right;
+  font-size: 1.1em;
+  color: #666;
+  font-weight: bold;
+  text-shadow: #FFF 1px 1px 0px;
+  padding: 3px 0 2px 0;
+  vertical-align: middle;
+  width: auto;
+  border-style: none;
+}
+
+table.bonsaiTable .filter input {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  /*width:300px;*/
+  font-size: 1.6em;
+  border: 1px solid #999;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  clear: none;
+}
+
+table.bonsaiTable thead .filter .buttonHolder {
+  display: inline;
+  padding: 0;
+  margin: 3px 0 0 0;
+}
+table.bonsaiTable thead .filter .buttonHolder img {
+  margin: 0px;
+}
+table.bonsaiTable thead .filter .buttonHolder a {
+  float: right;
+}
+table.bonsaiTable thead .filter .buttonHolder a:hover {
+  background-color: #FFF;
+}
+
+table.bonsaiTable tfoot {
+  background-color: #EFEFEF;
+  text-align: center;
+}
+table.bonsaiTable tfoot img {
+  cursor: pointer;
+  top: 2px;
+  position: relative;
+}
+table.bonsaiTable tfoot {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #000;
+}
+table.bonsaiTable tfoot td{
+  height:35px;
+  vertical-align: middle;
+  font-size: 1.2em;
+}
+table.bonsaiTable .bonsaiTablePager {
+  padding: 10px 0 10px 0;
+}
+table.bonsaiTable #toolBoxTablePagination a, table.bonsaiTable #toolBoxTablePagination .current{
+  padding: 10px;  
+}
+table.bonsaiTable .bonsaiTablePager span {
+  padding: 0 5px 0 5px;
+}
+table.bonsaiTable .bonsaiTablePager input.prev {
+  width: auto;
+  margin-right: 10px;
+}
+table.bonsaiTable .bonsaiTablePager input.next {
+  width: auto;
+  margin-left: 10px;
+}
+table.bonsaiTable .pagedisplay {
+  font-size: 1.0em;
+  width: 30px;
+  border: 0px;
+  background-color: #EFEFEF;
+  text-align: center;
+  vertical-align: top;
+}
+table.bonsaiTable .pagesize {
+  font-size: 0.9em;
+  visibility: hidden;
+  margin-left: 5px
+}
+
+table.bonsaiTable table.headerElements input[type="button"] {
+  height: 20px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+table.bonsaiTable .locationName, table.bonsaiTable .locationAliases {
+  font-size: 2.3em;
+  text-shadow: #DDD 3px 3px 5px;
+  margin: 0;
+  padding: 10px 15px;
+  color: #1B81BB;
+  cursor: auto !important;
+  /*background: url('../images/gray-grad-table-head.gif') repeat-x 0 -21px #f8f8f8;*/
+
+  float: left;
+}
+table.bonsaiTable .locationAliases {
+  font-size: 1.5em;
+  float: none;
+  text-align: left;
+  padding: 15px 0px 4px 10px !important;
+}
+.listPhotoDetails {
+  width: 20%;
+}
+.listPhotoDetails ul {
+  margin: 5px;
+  padding: 0px;
+}
+.listPhotoDetails li {
+  font-size: 1.0em;
+  list-style: circle !important;
+  text-align: left;
+  line-height: 1.2em;
+  min-height: 1.2em;
+  display: block;
+  margin: 3px 0px 3px 0px;
+  border-bottom: 1px dotted #CCC;
+  padding: 3px 10px 5px 10px;
+}
+.listPhotoDetails li:last-child {
+  border-bottom: 0px none;
+}
+
+.listPhotoDetails li.productPhoto{
+  text-align:center;
+  list-style: none;
+  border-bottom: 0px none;
+}
+.listPhotoDetails .detailsIndentificator {
+  font-size: 1.5em;
+  line-height: 1.6em;
+  font-weight: bold;
+  text-align:center;
+  list-style: none;
+}
+
+.productItemLowQuantity {
+  background-color: #FFDBDD;
+}
+.productItemSalesOK {
+  background-color: #CFFF88;
+}
+
+.productItemLowQuantityInStatistics {
+  background-color: #FFF0F1;
+}
+.productItemSalesOKInStatistics {
+  background-color: #E9FACF;
+}
+
+#productList .columnHeads  th {
+  padding: 9px;
+  font-size: 1.3em;
+  font-weight: normal;
+  border-top: 1px solid #CCC;
+  background: url('../images/sprite.png') repeat-x 0px 14px #FFF;
+}
+
+.productListItems {
+  padding: 0px !important;
+  /*border-bottom: 0px none !important;*/
+}
+
+.statistics#productList td {
+    font-size: 1.02em;
+}
+.statistics#productList th{
+    font-size: 1.1em;
+}
+
+.productListItems > table {
+  width: 100%;
+  border-width: 0px 0px 1px 0px !important;
+  border-color: #CCC;
+  border-style: solid;
+}
+.productListItems > table th, .productListItems > table td {
+  text-align: center;
+  padding: 2px;
+  border-width: 1px 1px 0px 0px !important;
+  border-color: #CCC;
+  border-style: solid;
+  height: 21px !important;
+}
+.productListItems > table tr:first-child th, .productListItems > table tr:first-child td{
+  border-top: 0px none;
+}
+.productListItems > table th:last-child, .productListItems > table td:last-child {
+  border-width: 1px 0px 0px 0px !important;
+}
+.productListItems > table th {
+  background-image: none !important;
+}
+.productListItems table.statisticsInner td, .productListItems table.statisticsInner th{
+  font-size: .9em !important;
+  font-weight: normal;
+}
+.logsTable td{padding: 5px;}
+
+.noBackground {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+#productList .statisticsInner .subTotals{
+    background-color: #FFFEE7;
+}
+#productList .statisticsInner .subTotals.total{
+     background-color: #DCFDDC;
+ }
+#productList .statisticsInner .subTotals td{
+    font-weight: bold;
+    border-bottom: 1px solid #CCC !important;
+    border-left-color: #FFFEE7 !important;
+    border-right-color: #FFFEE7 !important;
+}
+#productList .statisticsInner .subTotals.total td{
+    border-left-color: #DCFDDC !important;
+    border-right-color: #DCFDDC !important;
+}
+
+

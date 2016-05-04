@@ -1,0 +1,129 @@
+			  <fieldset class="commonParams ui-widget-content">
+                  <legend> Стандартни параметри </legend>
+
+                  <%
+                    # За квартали, райони, офиси - select box с Градове
+                    if (controller.controller_name == "locations" || controller.controller_name == "districts" || controller.controller_name == "offices")
+                  %>
+
+                    <%=render :partial => "cms_form_elements_web", :locals =>{
+                      :type => "select",
+                      :param => "city_id",
+                      :collection => @cities,
+                      :shown_name => "alias",
+                      :title => "Населено място",
+                      :example => "Изберете <b>Населено място</b>",
+                    	:blank => false,
+                      :f => f
+                    }%>
+  
+                  <%end%>
+
+                  <%=render :partial => "cms_form_elements_web",
+                    :locals =>{
+                      :type => "text_field",
+                      :param => "alias",
+                      :title => "Служебно име",
+                      :example => "Служебно номенклатурно име",
+                      :f => f
+                  	}%>
+				  <%
+	              	# За Отдели
+	                if (controller.controller_name == "departments")
+	              %>
+					<%=render :partial => "cms_form_elements_web",
+				    :locals =>{
+				      :type => "text_field",
+				      :param => "email",
+				      :title => "E-mail",
+				      :example => "Електронен адрес",
+				      :f => f
+				    }%>
+				  <%=render :partial => "cms_form_elements_web",
+				    :locals =>{
+				      :type => "text_area",
+				      :param => "description",
+				      :title => "Описание",
+				      :example => "Описание на отдел",
+				      :f => f
+				    }%>
+				   <%end%>
+				  <%
+	              	# За Офиси
+	                if (controller.controller_name == "offices")
+	              %>
+					<%=render :partial => "cms_form_elements_web", :locals =>{
+							:type => "select",
+							:param => "manager_id",
+							:collection => @brokers,
+							:shown_name => "email",
+							#:shown_name_extended => "lname",
+							:title => "Мениджър",
+							:example => "Изберете <b>Мениджър</b>",
+							:blank => false,
+							:f => f
+						}%>
+
+					<%=render :partial => "cms_form_elements_web",
+				    :locals =>{
+				      :type => "text_field",
+				      :param => "phone1",
+				      :title => "Телефон",
+				      :example => "Телефон",
+				      :f => f
+				    }%>
+					<%=render :partial => "cms_form_elements_web",
+				    :locals =>{
+				      :type => "text_field",
+				      :param => "phone2",
+				      :title => "Телефон",
+				      :example => "Телефон",
+				      :f => f
+				    }%>
+					<%=render :partial => "cms_form_elements_web",
+				    :locals =>{
+				      :type => "text_field",
+				      :param => "phone3",
+				      :title => "Телефон",
+				      :example => "Телефон",
+				      :f => f
+				    }%>
+					<%=render :partial => "cms_form_elements_web",
+				    :locals =>{
+				      :type => "text_field",
+				      :param => "mobile",
+				      :title => "Мобилен Телефон",
+				      :example => "Мобилен Телефон",
+				      :f => f
+				    }%>
+					<%=render :partial => "cms_form_elements_web",
+				    :locals =>{
+				      :type => "text_field",
+				      :param => "fax",
+				      :title => "Факс",
+				      :example => "Факс",
+				      :f => f
+				    }%>
+					<%=render :partial => "cms_form_elements_web",
+				    :locals =>{
+				      :type => "text_field",
+				      :param => "email",
+				      :title => "E-mail",
+				      :example => "Електронен адрес",
+				      :f => f
+				    }%>
+				   <%end%>
+					 
+		<%    	# За Типове Имоти
+	           if (controller.controller_name == "realestate_types")
+	              %>			 
+				 <%=render :partial => "cms_form_elements_web",
+					:locals =>{
+						:type => "text_field",
+						:param => "position",
+						:title => "Позиция",
+						:example => "Въведете <b>Позицията</b> на типа. Напр.: <b>2</b>",
+						:f => f
+    		}	%>
+				<%end%>
+ </fieldset>

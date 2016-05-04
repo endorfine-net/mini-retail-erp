@@ -1,0 +1,17 @@
+<% form_for([@product], :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag :page, params[:page] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <%= hidden_field_tag :status_id, params[:status_id] %>
+  <%= hidden_field_tag :user_id, params[:user_id] %>
+  <%= hidden_field_tag :last_method, params[:last_method] %>
+  <%= hidden_field_tag :sort_direction, params[:sort_direction] %>
+  <%= hidden_field_tag :sort_column, params[:sort_column] %>
+  <%= hidden_field_tag :last_page, params[:last_page] %>
+  <%= hidden_field_tag :location_id, params[:location_id] %>
+  <%= hidden_field_tag :search_string, params[:search_string] %>
+  <h2><%= link_to image_tag("/images/icon-back.png", :height => '32', :width => '32', :alt => "Връщане назад", :title => "Връщане назад", :border =>'0'), url_for(:action => @last_method, :sort_direction => @sort_direction, :sort_column => @sort_column, :last_page => @last_page, :search_string => @search_string, :page => @page, :sort => @sort, :location_id => @location_id) %> Редактиране на "<strong>Продукт</strong>"</h2>
+  <%= render :partial => '/errors', :locals => { :f => f }%>
+  <%= render :partial => 'form', :locals => { :f => f } -%>
+  <%= render :partial => '/submit_form_buttons', :locals => { :f => f, :button_title => "Запази", :cancel_path => products_path()} -%>
+<% end -%>

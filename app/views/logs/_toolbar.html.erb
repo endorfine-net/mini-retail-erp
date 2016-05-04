@@ -1,0 +1,45 @@
+<script type="text/javascript">
+    $(window).load(function () {
+        $("#date_from").datepicker();
+        $("#date_to").datepicker();
+    });
+</script>
+
+<form id="productListForm">
+  <div id="toolbar" class="grid_5 alpha">
+    <label for="date_from">От:</label>
+    <input name="date_from" id="date_from" type="text" class="datepicker ui-state-active ui-corner-all" value="<%= @date_from %>"/>
+    <label for="date_to">До:</label>
+    <input name="date_to" id="date_to" type="text" class="datepicker ui-state-active ui-corner-all" value="<%= @date_to %>"/>
+    <% if has_role?("manager") %>
+        <%= select_tag("user_id", "<option value=" ">[Потребител]</option>" + options_from_collection_for_select(@users_select_list, :id, :alias, @user_id.to_i),
+                       :class => "ui-state-active ui-corner-all", :style => "width:auto") %>
+        <%= select_tag("location_id", "<option value=" ">[Обект]</option>" + options_from_collection_for_select(@locations_select_list, :id, :alias, @location_id.to_i),
+                       :class => "ui-state-active ui-corner-all", :style => "width:auto") %>
+        <label for="ip_address">IP:</label>
+        <input name="ip_address" id="ip_address" type="text" class="ui-state-active ui-corner-all" value="<%=@ip_address %>"/>
+    <%end%>
+    <%= select_tag :action_type,
+                           "<option value=''>[Действие]</option>" +
+                           "<option value='SALE' " + get_selected_action_type(@action_type, "SALE") + ">" + get_human_readable_action_type("SALE") + "</option>" +
+                           "<option value='EXCHANGE_TAKE' " + get_selected_action_type(@action_type, "EXCHANGE_TAKE") + ">" + get_human_readable_action_type("EXCHANGE_TAKE") + "</option>" +
+                           "<option value='EXCHANGE_GIVE' " + get_selected_action_type(@action_type, "EXCHANGE_GIVE") + ">" + get_human_readable_action_type("EXCHANGE_GIVE") + "</option>" +
+                           "<option value='REFUND' " + get_selected_action_type(@action_type, "REFUND") + ">" + get_human_readable_action_type("REFUND") + "</option>" +
+                           "<option value='ITEM_TRANSFER' " + get_selected_action_type(@action_type, "ITEM_TRANSFER") + ">" + get_human_readable_action_type("ITEM_TRANSFER") + "</option>" +
+                           "<option value='ITEM_ADD' " + get_selected_action_type(@action_type, "ITEM_ADD") + ">" + get_human_readable_action_type("ITEM_ADD") + "</option>" +
+                           "<option value='ITEM_UPDATE' " + get_selected_action_type(@action_type, "ITEM_UPDATE") + ">" + get_human_readable_action_type("ITEM_UPDATE") + "</option>" +
+                           "<option value='PRODUCT_CREATE' " + get_selected_action_type(@action_type, "PRODUCT_CREATE") + ">" + get_human_readable_action_type("PRODUCT_CREATE") + "</option>" +
+                           "<option value='PRODUCT_UPDATE' " + get_selected_action_type(@action_type, "PRODUCT_UPDATE") + ">" + get_human_readable_action_type("PRODUCT_UPDATE") + "</option>" +
+                           "<option value='ITEM_REQUEST' " + get_selected_action_type(@action_type, "ITEM_REQUEST") + ">" + get_human_readable_action_type("ITEM_REQUEST") + "</option>",
+                   :class => "ui-state-active ui-corner-all", :style => "width:10em" %>
+    <label for="human_readable_text">Продукт:</label>
+    <input name="human_readable_text" id="human_readable_text" type="text" class="ui-state-active ui-corner-all" value="<%=@human_readable_text %>"/>
+    <%= select_tag("source_location_id", "<option value=" ">[От]</option>" + options_from_collection_for_select(@locations_select_list, :id, :alias, @source_location_id.to_i),
+                   :class => "ui-state-active ui-corner-all", :style => "width:auto") %>
+    <%= select_tag("destination_location_id", "<option value=" ">[Към]</option>" + options_from_collection_for_select(@locations_select_list, :id, :alias, @destination_location_id.to_i),
+                   :class => "ui-state-active ui-corner-all", :style => "width:auto") %>
+    <label for="search_note">Бележки:</label>
+    <input name="search_note" id="search_note" type="text" class="ui-state-active ui-corner-all" value="<%= @search_note %>"/>
+    <input type="submit" value="Филтър"/>
+  </div>
+</form>

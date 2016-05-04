@@ -1,0 +1,207 @@
+<%
+	image_prefix = "http://www.yavlena.com"
+%>
+
+<table style="font-family:Verdana, Geneva, sans-serif; font-size:85%; background-color:#EEE; width:100%;" cellspacing="0" cellpadding="10" border="0">
+<tr><td valign="top" style="color:#333 !important" align="center">
+<table width="710" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td align="left">
+<p style="font-size:13px; line-heght:26px; padding:0px; margin:10px 0 0 0; width:710px !important; display: block; text-align:justify !important; font-family:Verdana, Geneva, sans-serif;" align="left"><%=@body_text%></p>
+    </td>
+  </tr>
+</table>
+</td></tr>
+<tr><td align="center" valign="top">
+<table style="width:710px; background-color:#FFF; border:1px solid #CCC; color:#333; font-family:Verdana, Geneva, sans-serif;" border="0" cellspacing="0" cellpadding="15">
+<tr><td valign="top" style="color:#333 !important">
+<div class="container_12" style="width:680px; margin: 10px auto; background-color:#FFF">
+<div class="grid_12" id="header" style="border-bottom:1px solid #ccc; width:680px; float:left; background-color:#FFF">
+    <div class="grid_6 alpha" style="width:340px; display:block; clear:none; float:left; background-color:#FFF"><img src="<%=image_prefix%>/images/logo-print.jpg" width="271" height="92" alt="Yavlena logo" /></div>
+  </div>
+  <div class="grid_12" id="offer_details" style="width:680px; float:left; background-color:#FFF">
+    <div class="grid_12" id="offer_title" style="width:680px; float:left; background-color:#FFF">		
+      <% 
+		offer_title = get_otype(@offer.offer_type_id)+ " " + get_rtype(@offer.realestate_type_id)+ ", " + get_city_group(@offer.city_id) + get_city(@offer.city_id)
+		if !@offer.location_id.blank? && !@offer.location.blank? && (@offer.city.id == @offer.location.city_id)
+			offer_title = offer_title + ", " + get_location(@offer.location_id)
+		end
+			%>
+      <h1 style="font-size:18px; margin:10px 0;"><%=offer_title%></h1>
+    </div>
+    <div class="grid_12" id="offer_data" style="width:680px; float:left; background-color:#FFF">
+      <div class="grid_12" style="width:680px; float:left; background-color:#FFF">
+        <h2 style="font-size:15px; margin:10px 0; display:inline"><%=currency_format(@offer.price)%>,</h2>
+        <%if !@offer.area.blank?%>
+        <h2 style="font-size:15px; margin:10px 0; display:inline"><%=area_format(@offer.area)%>&nbsp;(<%=currency_format_per_sqm(@offer.price.to_f/@offer.area.to_f, @offer.offer_type_id)%>),</h2>
+        <%end%>
+        <h2 style="font-size:15px; margin:10px 0; display:inline"><span>ID:&nbsp;</span><%=@offer.id%>
+          <%if !@offer.num.blank?%>
+          <span>&nbsp;/&nbsp;<%=_('Служ.No')%>:&nbsp;</span><%=@offer.num%>
+          <%end%>
+        </h2>
+      </div>
+      <div class="grid_12" style="text-align:center; width:680px; float:left; background-color:#FFF">
+			<%if @offer.offer_pictures.size > 0%>
+			<table width="680" border="0" cellspacing="0" cellpadding="2" valign="top">
+  <tr>
+    <td width="450">
+					<%if @offer.offer_pictures.size > 1%>
+						<div  class="grid_8"  id="main_photo_holder" style="width:450px; display:block; clear:none; float:left; background-color:#FFF">
+					<%else%>
+						<div class="grid_8" style="margin-left:115px; width:435px; height:325px; display:block; margin:10px 0; background-color:#FFF" id="main_photo_holder">
+					<%end%>
+							<div class="mainPhoto" style="margin:0 auto; text-align:center;"><img src="<%= image_prefix + @offer.offer_pictures.first.pic.url(:full)%>" width="433" height="325" alt="<%=offer_title%>" id="main_photo" style="border:1px solid #999; padding:3px;"/> </div>
+						</div>
+		</td>
+    <td width="220" valign="top">
+		<%if @offer.offer_pictures.size > 1%>				
+        <div class="grid_4" id="thumbnails" style="text-align:center; width:220px; display:block; clear:none; float:left; background-color:#FFF"> 				
+          <%
+					i = 0;
+					for offer_picture in @offer.offer_pictures
+					if i > 0 and i < 4
+					%>
+					<div class="thumbs" style="width:150px; height:100px; display:block; margin:0 0 5px 30px;">
+	          <img src="<%= image_prefix + offer_picture.pic.url(:thumb)%>" width="150" height="100" alt="<%=offer_title%>" style="border:1px solid #999; padding:2px;" />
+					</div>
+          <% 					
+					end 
+					i= i + 1;
+					end%>
+        </div>
+			<%end%>	
+		</td>
+  </tr>
+</table>
+<%end%>
+
+      </div>
+      <div class="grid_12" style="width:680px; float:left; background-color:#FFF; text-align:left">
+        <h4 style="font-size:13px;margin:10px 0;display:inline"><%=get_offer_title(@offer.id)%></h4>
+        <p class="description" style="font-size:12px; line-height:18px; text-align:justify;"><%=get_offer_description(@offer.id)%></p>
+<ul style="margin:10px 0; padding:0 15px; list-style:circle">
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('ЗП') +": "+ area_format(@offer.zp) + "</li>" if !@offer.zp.blank?-%>	
+				<%if !@offer.floor.blank? && !@offer.floors.blank? && @offer.floor.to_i != 0 && @offer.floors.to_i != 0%>
+					<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('eтаж') +": " + @offer.floor.to_s + " #{_('от')} " + @offer.floors.to_s + "</li>"-%>
+				<%elsif !@offer.floor.blank? && @offer.floor.to_i != 0%>
+					<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('eтаж') +": " + @offer.floor.to_s  + "</li>"-%>    
+				<%end%>
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + ConstructionTypeLanguage.find(:first, :conditions => {:construction_type_id => @offer.construction_type_id, :language_id => lang_id}).name + "</li>" if !@offer.construction_type_id.blank? -%>	
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + HeatingTypeLanguage.find(:first, :conditions => {:heating_type_id => @offer.heating_type_id, :language_id => lang_id}).name + "</li>" if !@offer.heating_type_id.blank? -%>
+				
+				<%if !@offer.exposures.blank?%>
+				<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>
+					<%i=0%>
+					<%for exposure in @offer.exposures%>
+						<%=get_exposure_li(exposure.id)%>
+						<%if (@offer.exposures.length > 1) && i < @offer.exposures.length - 1%>,&nbsp;<%end%>
+						<%i+=1%>
+					<%end%>
+				</li>
+				<%end%>
+				<%if !@offer.build_states.blank?%>
+					<%for build_state in @offer.build_states%>
+					<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>					
+						<%=get_build_state_li(build_state.id)%>
+					</li>						
+					<%end%>
+				<%end%>
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + CurrStatusLanguage.find(:first, :conditions => {:curr_status_id => @offer.curr_status_id, :language_id => lang_id}).name + "</li>" if !@offer.curr_status_id.blank? -%>
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('ЗП') +": "+ area_format(@offer.zp) + "</li>" if !@offer.zp.blank?-%>			
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('РЗП') +": "+ area_format(@offer.rzp) + "</li>" if !@offer.rzp.blank?-%>								
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('Площ земя') +": "+ area_format(@offer.land_area) + "</li>" if !@offer.land_area.blank?-%>
+			  <%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('Площ офис част') +": "+ area_format(@offer.area_office_part) + "</li>" if !@offer.area_office_part.blank?-%>
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('Светла височина') +": "+ @offer.svetla_visochina.to_s + " m" + "</li>" if !@offer.svetla_visochina.blank?-%>
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('Лице') +": "+ @offer.face.to_s + " m" + "</li>" if !@offer.face.blank?-%>
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('Брой апартаменти за продажба') +": "+ @offer.num_app_for_sale.to_s + "</li>" if !@offer.num_app_for_sale.blank?-%>								
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('Година на стройтелство') +": "+ @offer.build_year.strftime("%Y") + "</li>" if !@offer.build_year.blank?-%>												
+				<%="<li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px;'>" + _('Пусков срок') +": "+ @offer.puskov_srok.strftime("%m.%Y") + "</li>" if !@offer.puskov_srok.blank?-%>
+				<%=offer_boolean_param_email(@offer.elevator, _('асансьор'))-%>
+				<%=offer_boolean_param_email(@offer.electricity, _('електричество'))-%>				
+				<%=offer_boolean_param_email(@offer.cabel, _('окабеляване'))-%>
+				<%=offer_boolean_param_email(@offer.canalizacia, _('канализация'))-%>				
+				<%=offer_boolean_param_email(@offer.conf_room, _('конферентна зала'))-%>				
+				<%=offer_boolean_param_email(@offer.dostup_asfalt, _('достъп по асфалтов път'))-%>												
+				<%=offer_boolean_param_email(@offer.dvoen_pod, _('двоен под'))-%>												
+				<%=offer_boolean_param_email(@offer.fan_system, _('вентилационна система'))-%>												
+				<%=offer_boolean_param_email(@offer.garden, _('градина'))-%>																				
+				<%=offer_boolean_param_email(@offer.garage, _('гараж'))-%>																				
+				<%=offer_boolean_param_email(@offer.hidro_termo, _('хидро и термо изолация'))-%>																				
+				<%=offer_boolean_param_email(@offer.in_build, _('в строеж'))-%>																												
+				<%=offer_boolean_param_email(@offer.in_close_complex, _('в затворен комплекс'))-%>																											    
+				<%=offer_boolean_param_email(@offer.kitchen, _('кухня'))-%>																											    
+				<%=offer_boolean_param_email(@offer.new_building, _('ново стройтелство'))-%>
+				<%=offer_boolean_param_email(@offer.new_building_with_a16, _('ново стройтелство с акт 16'))-%>
+				<%=offer_boolean_param_email(@offer.open_space_office, _('офис - отворено пространство'))-%>																								    									    
+				<%=offer_boolean_param_email(@offer.parking, _('паркинг'))-%>
+				<%=offer_boolean_param_email(@offer.parking_space, _('парко място'))-%>
+				<%=offer_boolean_param_email(@offer.podzemen_garage, _('подземен гараж'))-%>
+				<%=offer_boolean_param_email(@offer.prehodnost, _('преходност'))-%>			
+				<%=offer_boolean_param_email(@offer.property_managment, _('управление на имот'))-%>
+				<%=offer_boolean_param_email(@offer.nadzemen_garage, _('надземен гараж'))-%>
+				<%=offer_boolean_param_email(@offer.rampa, _('рампа'))-%>
+				<%=offer_boolean_param_email(@offer.restorant, _('ресторант'))-%>
+				<%=offer_boolean_param_email(@offer.security, _('охрана'))-%>
+				<%=offer_boolean_param_email(@offer.skladovo_pomeshtenie, _('складово помещение'))-%>
+				<%=offer_boolean_param_email(@offer.swiming_pool, _('басейн'))-%>
+				<%=offer_boolean_param_email(@offer.tir, _('ТИР'))-%>
+				<%=offer_boolean_param_email(@offer.tovaren_vhod, _('товарен вход'))-%>
+				<%=offer_boolean_param_email(@offer.tri_faz_tok, _('три фазен ток'))-%>
+				<%=offer_boolean_param_email(@offer.viza, _('виза'))-%>
+				<%=offer_boolean_param_email(@offer.water, _('вода'))-%>
+				<%=offer_boolean_param_email(@offer.wc, _('тоалетна'))-%>	
+				<%=offer_boolean_param_email(@offer.equip, _('оборудване/техника'))-%>
+			</ul>
+			
+			</div>
+      <div class="grid_12" id="contacts_info" style="width:680px; float:left; background-color:#FFF; margin:10px 0 0 0;">
+        <h2 style="font-size:16px; margin:10px 0; display:inline; display:block; margin:5px 0;"><%=_('За контакти')%></h2>
+        <div class="grid_6 alpha">
+          <h3 style="font-size:14px; margin:10px 0; display:inline; display:block; margin:5px 0;"><%=_('Брокер')%></h3>
+          <div class="brokerOfficeName" style="font-size:12px; margin:5px 0;"><%=get_broker_name(current_user.id)%></div>
+          <ul style="margin:10px 0; padding:0 15px;">
+            <li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px; display:list-item; margin-right:0px; float:none;'>
+              <label><%=_('Телефон')%>:</label>
+              &nbsp;<%=current_user.phone%></li>
+            <li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px; display:list-item; margin-right:0px; float:none;'>
+              <label><%=_('Мобилен')%>:</label>
+              &nbsp;<%=current_user.mobile%></li>
+            <li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px; display:list-item; margin-right:0px; float:none;'>
+              <label>Email:</label>
+              &nbsp;<%=current_user.email%></li>
+          </ul>
+        </div>
+        <%if !current_user.office.blank?%>
+        <div class="grid_6 omega">
+          <h3 style="font-size:14px; margin:10px 0; display:inline; display:block; margin:5px 0;"><%=_('Офис')%></h3>
+          <div class="brokerOfficeName" style="font-size:12px; margin:5px 0;"><%=get_office_name(current_user.office_id)%></div>
+          <ul style="margin:10px 0; padding:0 15px;">
+            <li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px; display:list-item; margin-right:0px; float:none;'>
+              <label><%=_('Град')%>:</label>
+              &nbsp;<%=get_city(current_user.office.city_id)%></li>
+            <li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px; display:list-item; margin-right:0px; float:none;'>
+              <label><%=_('Адрес')%>:</label>
+              &nbsp;<%=get_office_address(current_user.office_id)%></li>
+            <li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px; display:list-item; margin-right:0px; float:none;'>
+              <label><%=_('Телефон')%>:</label>
+              &nbsp;<%=current_user.office.phone1%></li>
+            <li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px; display:list-item; margin-right:0px; float:none;'>
+              <label><%=_('Мобилен')%>:</label>
+              &nbsp;<%=current_user.office.mobile%></li>
+            <li style='float:left; clear:none; display: inline; list-style:none; margin-right:30px; font-size:12px; line-height:18px; display:list-item; margin-right:0px; float:none;'>
+              <label>Email:</label>
+              <%=current_user.office.email%></li>
+          </ul>
+        </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</td></tr>
+</table>
+</td></tr>
+</table>
+

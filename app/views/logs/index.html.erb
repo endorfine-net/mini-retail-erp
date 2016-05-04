@@ -1,0 +1,103 @@
+<div class="contentWrapper">
+  <h2><%= @title %></h2>
+  <%= render :partial => "toolbar"%>
+  <script type="text/javascript">
+      $(function () {
+          $("#statuses").buttonset();
+          $("input:submit", "#toolbar").button();
+      });
+  </script>
+  <table cellpadding="2" cellspacing="0" border="0" class="bonsaiTable ui-corner-all logsTable noBackground" id="productList">
+    <thead>
+    <tr class="columnHeads">
+      <th>Дата</th>
+      <th>Потребител</th>
+      <th>Обект</th>
+      <th>IP</th>
+      <th>Действие</th>
+      <th>Продукт</th>
+      <th>Количество</th>
+      <th>Сума</th>
+      <th>От</th>
+      <th>Към</th>
+      <th>Бележка</th>
+    </tr>
+    </thead>
+    <tbody class="listBody">
+    <% @logs.each do |log| %>
+    <%
+       if !log.price.blank? && !log.default_price.blank?
+         if log.price.abs != log.default_price.abs
+            styleClass = 'class="highlight"'
+         else
+            styleClass = ''
+         end
+       end
+    %>
+        <tr <%=styleClass%>>
+          <td align="CENTER"><%= format_datetime(log.created_at) -%> </td>
+          <td align="CENTER"><%= log.user.alias -%> </td>
+          <td align="CENTER"><%= log.location.alias -%></td>
+          <td align="CENTER"><%= log.ip_address -%></td>
+          <td align="CENTER"><%= get_human_readable_action_type(log.action_type) -%> </td>
+          <td><%= log.human_readable_text -%></td>
+          <td align="CENTER"><%= log.quantity unless log.quantity.blank? -%> </td>
+          <td align="CENTER"><%= log.price unless log.price.blank? -%> </td>
+          <td align="CENTER"><%= get_location_alias(log.source_location_id) unless log.source_location_id.blank? -%> </td>
+          <td align="CENTER"><%= get_location_alias(log.destination_location_id) unless log.destination_location_id.blank? -%> </td>
+          <td><%= log.note unless log.note.blank? -%></td>
+        </tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+    <tr id="toolBoxTablePagination">
+      <td colspan="12" valign="top">
+        <%= will_paginate @logs,
+                          :previous_label => image_tag("/images/prev.png", :alt => "Предишна", :border => '0', :class => 'prev'),
+                          :next_label => image_tag("/images/next.png", :alt => "Предишна", :border => '0', :class => 'next'),
+                          :page_links => true,
+                          :inner_window => 5,
+                          :outer_window => 1,
+                          :container => false
+        -%>
+        <% if @logs.size > @per_page %>
+            <select class="pagesize ui-button ui-widget  ui-state-default ui-corner-all">
+              <option
+              <% if @per_page == 10 %>selected="selected"
+              <% end %> value="10">10
+              </option>
+              <option
+              <% if @per_page == 20 %>selected="selected"
+              <% end %> value="20">20
+              </option>
+              <option
+              <% if @per_page == 30 %>selected="selected"
+              <% end %> value="30">30
+              </option>
+              <option
+              <% if @per_page == 40 %>selected="selected"
+              <% end %> value="40">40
+              </option>
+            </select>
+        <% end %>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+  <input name="sort_direction" id="sort_direction" type="hidden"
+         <% if !@sort_direction.blank? %>value="<%= @sort_direction %>"
+  <% end %> />
+  <input name="sort_column" id="sort_column" type="hidden"
+         <% if !@sort_direction.blank? %>value="<%= @sort_column %>"
+  <% end %>/>
+  <input name="last_page" id="last_page" type="hidden"
+         <% if !@sort_direction.blank? %>value="<%= @last_page %>"
+  <% end %>/>
+  <input name="search_string" id="search_string" type="hidden"
+         <% if !@search_string.blank? %>value="<%= @search_string %>"
+  <% end %>/>
+  <script type="text/javascript">
+      transform_table_list("<%=self.controller_name%>", "<%=self.action_name%>");
+  </script>
+</div>
+<br/>

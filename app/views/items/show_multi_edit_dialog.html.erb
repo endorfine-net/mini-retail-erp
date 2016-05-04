@@ -1,0 +1,64 @@
+<script>var item_id = $(".modalInspector #item_id"), scope_type = $(".modalInspector #scope_type"),price = $(".modalInspector #price"), allFields = $([]).add(price).add(scope_type), tips = $(".validateTips");</script>
+
+<%if !@message.nil?%>
+  <script language="JavaScript">
+    showSuccess("<%=@message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+<%if !@error_message.nil?%>
+  <script language="JavaScript">
+    showError("<%=@error_message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+<form class="modalInspector" id="modalDialogForm">
+  <%= hidden_field_tag :item_id, @item.id %>
+  <table border="0" cellspacing="0" cellpadding="2" style="width: 100%" id="add_items_form_table">
+    <thead>
+      <%= render :partial => "/products/product_details_header" %>      
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">
+        <div class="formHolder">
+        <div class="formElementBinder">
+            <label>Цвят(код):</label>
+            <div class="form_element  ">
+              <%=getColorPreviewBox(@item.color)%>
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Номер:</label>
+            <div class="form_element  ">
+              <input type="text" id="size" name="size" disabled="disabled" class="disabledFormElement" value="<%=@item.size %>">
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Обхват: </label>
+            <div class="form_element  ">
+              <select id="scope_type" name="scope_type">
+                <option value="self">Избраният артикул</option>
+                <option value="same_product_with_same_color">(Цвят) Артикули от продукта със същия цвят</option>
+                <option value="same_product_with_same_size">(Номер) Артикули от продукта със същия размер</option>
+                <option value="same_product">Всички артикули от продукта</option> 
+              </select>
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Начална цена:</label>
+            <div class="form_element  ">
+              <input type="text" id="old_price" name="old_price" disabled="disabled" class="disabledFormElement" value="<%=@item.old_price %>">
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Продажна цена:</label>
+            <div class="form_element  ">
+              <input type="text" id="price" name="price"  value="<%=@item.price %>">
+            </div>
+          </div>
+        </div><p class="validateTips"></p></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

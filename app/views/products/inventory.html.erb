@@ -1,0 +1,17 @@
+<%if !@products.blank?%>
+  <%= render :partial => "/products/all_products", :locals =>{:title => @title, :products => @products, :locations => @locations_select_list, :product_type_id => @product_type_id, :open_product_by_code => @open_product_by_code}%>
+<%else%>
+<h2><%= link_to( image_tag("/images/icon-add.png", :height => '32', :width => '32', :alt => "Добави нов продукт", :title => "Добави нов продукт", :border =>'0'), url_for(:action => 'new')) if has_permissions?("products", "create")%>Няма данни...</h2>
+  <form id="productListForm">
+    <div id="toolbar" class="grid_5 alpha">
+      <%#= select_tag("location_id", "<option value="">[Обект]</option>" + options_from_collection_for_select(@locations_select_list, :id, :alias, @location_id.to_i), :class => "ui-button ui-widget  ui-state-default ui-corner-all", :style=> "width:28%")%>
+      <%= select_tag("product_type_id", "<option value="">[Тип продукт]</option>" + options_from_collection_for_select(@product_types, :id, :alias, @product_type_id.to_i), :class =>"ui-button ui-widget  ui-state-default ui-corner-all", :style=> "width:auto") -%>
+      <input type="submit" value="филтър"/>
+    </div>
+    <script type="text/javascript">
+      $(function() {
+        $("input:submit", "#toolbar").button();
+      }); 
+    </script>
+  </form> 
+<%end%>

@@ -1,0 +1,75 @@
+   <%
+   		html_options = {} unless !html_options.nil?
+		span_for_observer_update = "" unless !span_for_observer_update.nil?
+		if example.blank?
+			no_example = "no_example"
+		else
+			no_example = ""
+		end
+	%>
+	
+<div class="formElementBinder <%=no_example%>">
+   <label><%=CGI::unescapeHTML(title)%></label>
+      <div class="form_element <%=type%> <%=no_example%>">
+		  <%if @errors and !@errors[param].nil?%>
+			 <div class="fieldWithErrors">
+		  <%end%>
+
+		  <%if !span_for_observer_update.blank?%>
+			<span id="<%=span_for_observer_update%>">
+		  <%else span_for_observer_update = "" %>
+		  <%end%>
+
+		  <%case type
+			  when type = "text_field"%>
+				<%= f.text_field param, html_options = html_options%>
+			<%when type = "password_field"%>
+				<%= f.password_field param, html_options = html_options%>
+			<%when type = "text_area"%>
+				<%= f.text_area param, html_options = html_options%>
+			<%when type = "check_box"%>
+				<%= f.check_box param, html_options = html_options%>
+			<%when type = "select"%>
+				<%
+					option_name = shown_name
+					shown_name_extended = "" unless !shown_name_extended.nil?
+					selected = selected
+				%>
+				
+				<%if shown_name%>
+    				<%= f.select(param, collection.collect {|element| [ element["#{option_name}"] = (element["#{shown_name}"].to_s+" "+element["#{shown_name_extended}"].to_s), element.id ]}, {:include_blank => blank, :selected => selected}, html_options = html_options) if !selected.blank? %>				
+    				<%= f.select(param, collection.collect {|element| [ element["#{option_name}"] = (element["#{shown_name}"].to_s+" "+element["#{shown_name_extended}"].to_s), element.id ]}, {:include_blank => blank}, html_options = html_options) if selected.blank? %>
+			   <%else%>
+			      <%= f.select(param, collection.collect {|element| [ element, element]}, {:include_blank => blank, :selected => selected}, html_options = html_options) if !selected.blank? %>        
+            <%= f.select(param, collection.collect {|element| [ element, element]}, {:include_blank => blank}, html_options = html_options) if selected.blank? %>
+			   <%end%>
+			<%when type = "date_select"%>
+			  <%
+				  start_year = (Date.today.year - 10) unless !start_year.nil?
+				  start_year = start_year.to_i unless start_year.nil?
+				  end_year = Date.today.year unless !end_year.nil?
+				  end_year = end_year.to_i unless end_year.nil?
+				  use_month_numbers = "" unless !use_month_numbers.nil?
+				  discard_day = "" unless !discard_day.nil?
+				  order = [:year, :month, :day] unless !order.nil?
+			  %>
+				<%= f.date_select param, :end_year => end_year, :start_year => start_year, :use_month_numbers => use_month_numbers, :discard_day => discard_day, :order => order%>
+		  <%end%>
+
+		  <%unless span_for_observer_update.blank? %>
+			</span>
+		  <%end%>
+  <%if !example.blank?%>
+      <div class="example <%=type%>"><%=example%></div></div>
+  <%else%>
+	  <%if @errors and !@errors[param].nil?%>
+      	</div>
+	  <%end%>
+
+      
+
+		   
+	<%end%>
+    
+
+</div>

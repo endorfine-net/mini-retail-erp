@@ -1,0 +1,14 @@
+<%if @status_id.nil? || (!@status_id.nil? && @status_id.to_i != 3)%>
+<%= link_to image_tag("/images/icon-edit.png", :height => '24', :width => '24', :alt => "Редакция", :title => "Редакция", :border =>'0'), url_for(:action => 'edit', :id => res, :page => @page, :sort => @sort, :name => @name, :user_id => @user_id) %>
+<%= link_to image_tag("/images/icon-photos.png", :height => '24', :width => '24', :alt => "Снимки", :title => "Снимки", :border =>'0'), url_for(:controller => "project_pictures", :action => 'index', :project_id => res.id, :page => @page, :sort => @sort, :name => @name) if controller.controller_name == "projects"%>
+<%if controller.controller_name == "projects"%>
+							<%if res.presentation.blank?%>
+								<%= link_to image_tag("/images/icon-presentation-new.png", :height => '24', :width => '24', :alt => "Добавяне на презентация", :title => "Добавяне на презентация", :border =>'0'), url_for(params.merge(:controller => 'presentations', :action => :new, :project_id => res.id, :last_method => self.action_name)) %>
+							<%else%>
+								<%= link_to image_tag("/images/icon-presentation-check.png", :height => '24', :width => '24', :alt => "Презентация", :title => "Презентация", :border =>'0'), url_for(params.merge(:controller => 'presentations', :action => :edit, :id => res.presentation.id, :last_method => self.action_name)) %>
+							<%end%>		
+<%end%>	
+<%= link_to image_tag("/images/icon-delete.png", :height => '24', :width => '24', :alt => "Изтриване", :title => "Изтриване", :border =>'0'), url_for(:action => 'destroy', :id => res, :page => @page, :sort => @sort, :name => @name, :user_id => @user_id), :confirm => 'Сигурни ли, сте?', :method => :delete %>
+<%else%>
+<%= link_to(image_tag("/images/icon-dearchivate.png", :height => '24', :width => '24', :alt => "Изваждане от архив", :title => "Изваждане от архив", :border =>'0'),  url_for(params.merge(:action => 'destroy', :id => res.id, :page => @page, :sort => @sort, :name => @name, :type => @type)), :confirm => 'Сигурни ли, сте?', :method => :delete) if res.status_id == 3 %>
+<%end%>

@@ -1,0 +1,78 @@
+bg:
+  hello: "Здравей свят!"
+#FullCalendar
+  starttime: "Начало"
+  endtime: "Край"
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%d-%m-%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Неделя, Понеделник, Вторник, Сряда, Четвъртък, Петък, Събота]
+    abbr_day_names: [Нед, Пон, Вто, Сря, Чет, Пет, Съб]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Януяри, Февруари, Март, Април, Май, Юни, Юли, Август, Септември, Октомври, Ноември, Декември]
+    abbr_month_names: [~, Яну, Фев, Мар, Апр, Май, Юни, Юли, Авг, Сеп, Окт, Ное, Дек]
+    # Used in date_select and datetime_select.
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"  
+#AuthLogic
+  authlogic:
+    error_messages:
+      login_blank: "Въведете email"
+      login_not_found: "Невалиден email или парола"
+      login_invalid: "Потребителското име може да съдържа само букви и цифри"
+      consecutive_failed_logins_limit_exceeded: "Consecutive failed logins limit exceeded, account is disabled."
+      email_invalid: "Въведете валиден email"
+      password_blank: "Не може да бъде празна"
+      password_invalid: "Невалидна парола"
+      not_active: "Неактивен акаунт"
+      not_confirmed: "Your account is not confirmed"
+      not_approved: "Your account is not approved"
+      no_authentication_details: "Въведете email и парола."
+    models:
+      user_session:    
+    attributes:
+      user_session:
+        login: ""
+        email: ""
+        password: "Парола:"
+        remember_me: "Запомни ме"
+#ACTIVE RECORD MODELS        
+  activerecord:
+    errors:
+      messages:
+        inclusion: "Задължителен параметър" 
+        exclusion: "Задължителен параметър" 
+        invalid: "Невалидна стойност"
+        confirmation: ""
+        accepted: ""
+        empty: "Задължителен параметър - не може да бъде празен" 
+        blank: "Задължителен параметър - не може да бъде празен" 
+        too_long: "Твърде голяма дължина"
+        too_short: "Твърде кратка дължина"
+        wrong_length: "Грешна дължина"
+        taken: ""
+        not_a_number: "Въведете число!"
+        greater_than: "Трябва да е по-голямо"
+        greater_than_or_equal_to: "Трябва да е по-голямо или равно"
+        equal_to: "Трябва да е равно"
+        less_than: "Трябва да е по-малко"
+        less_than_or_equal_to: "Трябва да е по-малко или равно"
+        odd: ""
+        even: ""

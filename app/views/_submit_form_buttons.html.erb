@@ -1,0 +1,5 @@
+  <div class="formButtons">
+	  <%= f.submit button_title %>
+    <%-link_to "Отказ", cancel_path, :method => :get%>
+    <input type="button" value="Отказ" onclick="top.window.location='<%=cancel_path%>'">
+  </div>

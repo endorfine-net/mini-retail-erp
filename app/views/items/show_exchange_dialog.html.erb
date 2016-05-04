@@ -1,0 +1,105 @@
+<script>var item_quantity_id = $(".modalInspector #item_quantity_id"), datetime = $(".modalInspector #datetime"), note = $(".modalInspector #note"), price = $(".modalInspector #price"), operation_id = $(".modalInspector #operation_id"), allFields = $([]).add(item_quantity_id).add(operation_id).add(price).add(note).add(datetime), tips = $(".validateTips");</script>
+
+<script>
+  $("#datetime").datetime({
+                          duration: '',  
+                          showTime: true,  
+                          constrainInput: false,  
+                          stepMinutes: 1,  
+                          stepHours: 1,  
+                          altTimeField: '',  
+                          time24h: false });
+</script>
+
+<%if !@message.nil?%>
+  <script language="JavaScript">
+    showSuccess("<%=@message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+<%if !@error_message.nil?%>
+  <script language="JavaScript">
+    showError("<%=@error_message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+  <script language="JavaScript">
+  
+    function showHidePrice(operationType){
+      if(operationType == 2){
+        $("#exchange_price").hide();
+      } else if(operationType == 3){
+        $("#exchange_price").show();
+      }
+    }
+    
+    $("#operation_id").change(function(){  
+      var selectedOperationType = $(this).find("option:selected").val();   
+      showHidePrice(selectedOperationType);
+    });
+    
+    $("#operation_id").change();
+    
+  </script>
+
+
+<form class="modalInspector" id="modalDialogForm">
+  <%= hidden_field_tag :item_quantity_id, @item_quantity.id %>
+  <table border="0" cellspacing="0" cellpadding="2" style="width: 100%" id="deliver_items_form_table">
+    <thead>
+      <%= render :partial => "/products/product_details_header" %>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">
+
+        <div class="formHolder">
+        <% if has_role?("manager")%>
+          <div class="formElementBinder">
+            <label>Дата, час: </label>
+            <div class="form_element ">
+                <input name="datetime" id="datetime" type="text"  value="<%= @datetime%>"> 
+            </div>
+          </div>
+        <%end%>
+          <div class="formElementBinder">
+            <label>Цвят:</label>
+            <div class="form_element  ">
+              <%=getColorPreviewBox(@item_quantity.item.color)%>
+            </div>
+          </div>
+          
+          <div class="formElementBinder">
+            <label>Номер:</label>
+            <div class="form_element  ">
+              <input type="text" id="size" name="size" disabled="disabled" class="disabledFormElement" value="<%=@item_quantity.item.size %>">
+            </div>
+          </div>
+          
+          <div class="formElementBinder">
+            <label>Операция: </label>
+            <div class="form_element  ">
+              <%= select_tag(:operation_id, options_from_collection_for_select(@operations, :id, :alias, @operation_id.to_i) )%>
+            </div>
+          </div>
+          
+          <div class="formElementBinder" id="exchange_price" style="display: none">
+            <label>Изплатена сума: </label>
+            <div class="form_element  ">
+              <input type="text" id="price" name="price" value="<%=@item_quantity.item.price %>">
+            </div>
+          </div>
+                   
+          <div class="formElementBinder">
+            <label>Бележка: </label>
+            <div class="form_element text_area">
+              <textarea id="note" name="note"><%=@item_operation.note %></textarea> 
+            </div>
+          </div>
+         
+          
+        </div><p class="validateTips"></p></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

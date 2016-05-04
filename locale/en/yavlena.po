@@ -1,0 +1,763 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: version 0.0.1\n"
+"POT-Creation-Date: 2010-06-21 13:14+0300\n"
+"PO-Revision-Date: 2013-01-31 21:12+0200\n"
+"Last-Translator: Borislav Radev <b.radev@gmail.com>\n"
+"Language-Team: JB Solutions LTD <info@jbsol.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: app/views/layouts/application.html.erb:17
+msgid "[старт] слайдшоу"
+msgstr "[start] slideshow"
+
+#: app/views/layouts/application.html.erb:18
+msgid "[стоп] слайдшоу"
+msgstr "[stop] slideshow"
+
+#: app/views/layouts/application.html.erb:22
+msgid "{current} от {total}"
+msgstr "{current} from {total}"
+
+#: app/views/home/offer.html.erb:96 app/views/home/project.html.erb:24
+msgid "Автоматично показване"
+msgstr "Auto slideshow"
+
+#: app/views/home/offer.html.erb:140 app/views/home/offer_print.html.erb:89
+#: app/views/home/project.html.erb:68
+msgid "Адрес"
+msgstr "Address"
+
+#: app/views/search/_locations.html.erb:41
+msgid "Ако не е избран нито един район/квартал, се търси във всички"
+msgstr "If you do not select any district/location, results will show all."
+
+#: app/views/search/_ctypes.html.erb:22 app/views/search/_retypes.html.erb:40
+msgid "Ако не е избран нито един тип, се търси във всички"
+msgstr "If you do not select any type, results will show all."
+
+msgid "Ако не е избрана нито еднa област/населено място, се търси във всички"
+msgstr "If you do not select any region/location, results will show all."
+
+#: app/views/home/_bottom.html.erb:20
+msgid "Блог"
+msgstr "Blog"
+
+#: app/views/home/offer.html.erb:48
+msgid "Брой апартаменти за продажба"
+msgstr "Apartments for sale"
+
+#: app/views/home/_brokers.html.erb:22 app/views/home/broker.html.erb:22
+msgid "Брой оферти"
+msgstr "Offers by this consultant"
+
+#: app/views/home/offer.html.erb:126 app/views/home/offer_print.html.erb:66
+#: app/views/home/project.html.erb:54
+msgid "Брокер"
+msgstr "Consultant"
+
+#: app/views/home/_brokers_old_view.html.erb:1
+#: app/views/home/about_us.html.erb:3 app/views/home/broker.html.erb:4
+msgid "Брокери"
+msgstr "Consultants"
+
+#: app/views/home/_promo_classic_search.html.erb:22
+msgid "Бързо търсене"
+msgstr "Quick search"
+
+#: app/views/search/_retypes.html.erb:3
+msgid "Видове имоти"
+msgstr "Property types"
+
+#: app/views/home/_right_info.html.erb:5
+msgid "Всички"
+msgstr "All"
+
+msgid "всички"
+msgstr "all"
+
+#: app/views/home/offer.html.erb:49
+msgid "Година на стройтелство"
+msgstr "Year of completion"
+
+#: app/views/home/offer.html.erb:139 app/views/home/offer_print.html.erb:86
+#: app/views/home/project.html.erb:67
+msgid "Град"
+msgstr "City"
+
+#: app/views/home/offer.html.erb:16
+msgid "Детайли на оферта"
+msgstr "Offer details"
+
+#: app/views/home/project.html.erb:6
+msgid "Детайли на проект"
+msgstr "Project details"
+
+#: app/views/search/search.html.erb:31
+msgid "Диапазони"
+msgstr "Price/Size"
+
+#: app/views/home/_office.html.erb:14
+msgid "Електронна поща:"
+msgstr "e-mail:"
+
+#: app/views/home/offer.html.erb:42
+msgid "ЗП"
+msgstr "Built-up area"
+
+#: app/views/home/offer.html.erb:124 app/views/home/offer_print.html.erb:64
+#: app/views/home/project.html.erb:52
+msgid "За контакти"
+msgstr "Contact"
+
+#: app/views/home/_right_info.html.erb:7
+msgid "За местоположения"
+msgstr "About locations"
+
+#: app/views/home/_bottom.html.erb:15 app/views/home/_bottom.html.erb:52
+#: app/views/home/_right_about_us.html.erb:3
+msgid "За нас"
+msgstr "About us"
+
+#: app/views/home/_right_info.html.erb:6
+msgid "За населени места"
+msgstr "About towns and villages"
+
+#: app/views/home/_right_info.html.erb:8
+msgid "За типове имоти"
+msgstr "About property types"
+
+#: app/views/home/_right_news.html.erb:20
+#: app/views/home/_right_offers.html.erb:20
+#: app/views/home/_right_panel.html.erb:26
+#: app/views/home/_right_search.html.erb:20
+msgid "Имоти в Бургас"
+msgstr "Properties in Burgas"
+
+#: app/views/home/_right_news.html.erb:18
+#: app/views/home/_right_offers.html.erb:18
+#: app/views/home/_right_panel.html.erb:24
+#: app/views/home/_right_search.html.erb:18
+msgid "Имоти в София"
+msgstr "Properties in Sofia"
+
+#: app/views/home/_right_news.html.erb:16
+#: app/views/home/_right_offers.html.erb:16
+#: app/views/home/_right_panel.html.erb:22
+#: app/views/home/_right_search.html.erb:16
+msgid "Имоти в София и страната"
+msgstr "Properties in Sofia and Bulgaria"
+
+#: app/views/home/_right_news.html.erb:19
+#: app/views/home/_right_offers.html.erb:19
+#: app/views/home/_right_panel.html.erb:25
+#: app/views/home/_right_search.html.erb:19
+msgid "Имоти във Варна"
+msgstr "Properties in Varna"
+
+#: app/views/home/offer_print.html.erb:5
+msgid "Имоти от Явлена"
+msgstr "Properties by Yavlena"
+
+#: app/views/home/_bottom.html.erb:6
+msgid ""
+"Имоти от Явлена, имоти в София, имоти в Варна, въобще имоти. Текст за имоти "
+"и недвижими имоти и продажба имоти и наем имоти. Агенция за недвижими имоти "
+"Явлена. Брокери на недвижими имоти. Отдели за продажба на имоти и отдели за "
+"наем на имоти.!!!! Тоя текст трябва да излиза само на начална страница за да "
+"няма дублиране на съдържание. А пък за отделните категории/страници (sales/"
+"rental/about_us/contact_us) - да има отделни текстчета, които винаги са "
+"\"отгоре\" :) и те така."
+msgstr ""
+"Yavlena Real Estate has thousands of properties for sale and to let in "
+"Bulgaria. Yavlena has offices in Sofia, Varna, Burgas, Nessebar, Sozopol, "
+"Tsarevo, Obzor, Blagoevgrad, Shumen, Veliko Tarnovo, Stara Zagora, Pleven, "
+"Sliven, and Yambol. Yavlena's services include consultancy and advisory, "
+"pricing, marketing and advertising of properties, handling enquiries and "
+"scheduling viewings, handling contract preparation and negotiation, "
+"management of real estate transactions and final settlement, landlord and "
+"tenant representation, mortgage consultancy, and property valuations by "
+"licensed professionals."
+
+#: app/views/home/_bottom.html.erb:5
+msgid "Имоти от Явлена. Недвижими имоти в София и страната"
+msgstr ""
+"Yavlena Real Estate offers property consultancy, advisory, transaction "
+"management,landlord and tenant representation, and valuations."
+
+#: app/views/home/_promo_classic_search.html.erb:38
+msgid "Какво:"
+msgstr "Property type:"
+
+#: app/views/home/_bottom.html.erb:19
+msgid "Карта на сайта"
+msgstr "Site map"
+
+#: app/views/home/_bottom.html.erb:16
+msgid "Контакти"
+msgstr "Contact"
+
+#: app/views/home/_promo_classic_search.html.erb:29
+msgid "Къде:"
+msgstr "Location:"
+
+#: app/views/home/_promo_classic_search.html.erb:31
+msgid "навсякъде"
+msgstr "any"
+
+#: app/views/home/offer.html.erb:47
+msgid "Лице"
+msgstr "Face"
+
+#: app/views/home/offer.html.erb:130 app/views/home/offer.html.erb:142
+#: app/views/home/offer_print.html.erb:73
+#: app/views/home/offer_print.html.erb:95 app/views/home/project.html.erb:58
+#: app/views/home/project.html.erb:70
+msgid "Мобилен"
+msgstr "Mobile"
+
+#: app/helpers/application_helper.rb:39
+msgid "Наем"
+msgstr "For Rent"
+
+#: app/views/home/_right_news.html.erb:12
+#: app/views/home/_right_offers.html.erb:12
+#: app/views/home/_right_search.html.erb:12
+msgid "Наем апартаменти"
+msgstr "Apartments for rent"
+
+#: app/views/home/_bottom.html.erb:38
+msgid "Наем имоти"
+msgstr "Properties for rent"
+
+#: app/views/home/_right_news.html.erb:13
+#: app/views/home/_right_offers.html.erb:13
+#: app/views/home/_right_search.html.erb:13
+msgid "Наем къщи"
+msgstr "Houses for rent"
+
+#: app/views/home/_right_news.html.erb:14
+#: app/views/home/_right_offers.html.erb:14
+#: app/views/home/_right_search.html.erb:14
+msgid "Наем офиси"
+msgstr "Offices for rent"
+
+#: app/views/home/_bottom.html.erb:14
+#: app/views/home/_promo_classic_search.html.erb:27
+msgid "Наеми"
+msgstr "Rentals"
+
+#: app/views/home/_bottom.html.erb:11
+msgid "Начало"
+msgstr "Home"
+
+#: app/views/home/_bottom.html.erb:54 app/views/home/_brokers.html.erb:2
+#: app/views/home/_right_about_us.html.erb:5
+msgid "Нашият екип"
+msgstr "Our people"
+
+#: app/views/home/news.html.erb:6
+msgid "Новина"
+msgstr "News"
+
+#: app/views/home/_bottom.html.erb:18 app/views/home/news.html.erb:3
+#: app/views/home/news.html.erb:14
+msgid "Новини"
+msgstr "News"
+
+#: app/views/home/offers.html.erb:41
+msgid "Няма намерени резултати"
+msgstr "Sorry, no properties were found"
+
+msgid "Моля, пробвайте отново като промените параметрите си на търсене!"
+msgstr "Please try again!"
+
+#: app/views/search/_furnitures.html.erb:10
+msgid "Обзавеждане"
+msgstr "Furnished"
+
+#: app/views/home/_brokers.html.erb:20 app/views/home/broker.html.erb:17
+msgid "Отдел"
+msgstr "Department"
+
+#: app/views/search/_htypes.html.erb:3
+msgid "Отопление"
+msgstr "With heating"
+
+#: app/views/home/broker.html.erb:38
+msgid "Оферти на"
+msgstr "Offers by"
+
+#: app/views/home/project.html.erb:78
+msgid "Оферти от този проект"
+msgstr "More offers of this project"
+
+#: app/views/home/offer.html.erb:136 app/views/home/offer_print.html.erb:82
+#: app/views/home/project.html.erb:64
+msgid "Офис"
+msgstr "Office"
+
+#: app/views/search/search.html.erb:40
+msgid "Площ"
+msgstr "Size"
+
+#: app/views/home/offer.html.erb:44
+msgid "Площ земя"
+msgstr "Land size"
+
+#: app/views/home/offer.html.erb:45
+msgid "Площ офис част"
+msgstr "Size of office space"
+
+#: app/views/home/_bottom.html.erb:17 app/views/home/_right_info.html.erb:3
+#: app/views/home/_right_news.html.erb:3
+#: app/views/home/_right_offers.html.erb:3
+#: app/views/home/_right_search.html.erb:3 app/views/home/info.html.erb:3
+#: app/views/home/info.html.erb:13
+msgid "Полезна информация"
+msgstr "Information centre"
+
+#: app/helpers/application_helper.rb:39
+msgid "Продажба"
+msgstr "For Sale"
+
+#: app/views/home/_right_news.html.erb:5
+#: app/views/home/_right_offers.html.erb:5
+#: app/views/home/_right_search.html.erb:5
+msgid "Продажба апартаменти"
+msgstr "Apartments for sale"
+
+#: app/views/home/_bottom.html.erb:24
+msgid "Продажба имоти"
+msgstr "Properties for sale"
+
+#: app/views/home/_right_news.html.erb:6
+#: app/views/home/_right_offers.html.erb:6
+#: app/views/home/_right_search.html.erb:6
+msgid "Продажба къщи"
+msgstr "Houses for sale"
+
+#: app/views/home/_right_news.html.erb:7
+#: app/views/home/_right_offers.html.erb:7
+#: app/views/home/_right_search.html.erb:7
+msgid "Продажба офиси"
+msgstr "Offices for sale"
+
+#: app/views/home/_right_news.html.erb:8
+#: app/views/home/_right_offers.html.erb:8
+#: app/views/home/_right_search.html.erb:8
+msgid "Продажба парцели"
+msgstr "Land for sale"
+
+#: app/views/home/_bottom.html.erb:13
+#: app/views/home/_promo_classic_search.html.erb:25
+msgid "Продажби"
+msgstr "Sales"
+
+msgid "Продажби имоти"
+msgstr "Sales"
+
+#: app/views/home/project.html.erb:10
+msgid "Проект"
+msgstr "Project"
+
+#: app/views/home/project.html.erb:4 app/views/home/projects.html.erb:8
+msgid "Проекти"
+msgstr "Projects"
+
+#: app/views/home/broker.html.erb:6 app/views/home/broker.html.erb:10
+msgid "Профил на"
+msgstr "Profile of"
+
+#: app/views/home/offer.html.erb:50
+msgid "Пусков срок"
+msgstr "Completion date"
+
+#: app/views/home/offer.html.erb:43
+msgid "РЗП"
+msgstr "Total built-up area"
+
+#: app/views/home/_bottom.html.erb:66
+msgid "Copyright &copy; 2010 Явлена ЕООД. Всички права запазени &reg;."
+msgstr "Copyright &copy; 2010 Yavlena Ltd. All rights reserved &reg;."
+
+#: app/views/home/_bottom.html.erb:66 app/views/layouts/bonsai.html.erb:59
+msgid "Разработка, дизайн и поддръжка"
+msgstr "Development, design and support"
+
+#: app/views/search/search.html.erb:3 app/views/search/search.html.erb:8
+msgid "Разширено търсене"
+msgstr "Classic search"
+
+#: app/views/search/_locations.html.erb:4
+msgid "Райони / Квартали"
+msgstr "Location"
+
+#: app/views/home/offers.html.erb:8
+msgid "Резултати от търсене"
+msgstr "Search results"
+
+#: app/views/home/offer.html.erb:46
+msgid "Светла височина"
+msgstr "Ceiling height"
+
+#: app/views/home/offer.html.erb:31 app/views/home/offer_print.html.erb:30
+msgid "Служ.No"
+msgstr "Ref No"
+
+#: app/views/home/about_us.html.erb:5
+msgid "Списък с брокери"
+msgstr "List of our people"
+
+#: app/views/home/news.html.erb:8
+msgid "Списък с новини"
+msgstr "List of news"
+
+#: app/views/home/offers.html.erb:10
+msgid "Списък с оферти"
+msgstr "List of offers"
+
+#: app/views/home/contact_us.html.erb:3
+msgid "Списък с офиси на Явлена"
+msgstr "List of offices Yavlena"
+
+#: app/views/home/projects.html.erb:3
+msgid "Списък с проекти"
+msgstr "List of projects"
+
+#: app/views/home/info.html.erb:8
+msgid "Списък със статии"
+msgstr "List of articles"
+
+#: app/views/home/info.html.erb:6
+msgid "Статия"
+msgstr "Article"
+
+#: app/views/home/_bottom.html.erb:9
+msgid "Страници"
+msgstr "Pages"
+
+#: app/views/search/_ctypes.html.erb:3
+msgid "Строителство"
+msgstr "Construction type"
+
+#: app/views/home/offer.html.erb:79
+msgid "ТИР"
+msgstr "TIR access"
+
+#: app/views/home/offer.html.erb:129 app/views/home/offer.html.erb:141
+#: app/views/home/offer_print.html.erb:70
+#: app/views/home/offer_print.html.erb:92 app/views/home/project.html.erb:57
+#: app/views/home/project.html.erb:69
+msgid "Телефон"
+msgstr "Tel"
+
+#: app/views/home/_office.html.erb:5
+msgid "Мениджър:"
+msgstr "Manager:"
+
+#: app/views/home/_office.html.erb:7
+msgid "Телефони:"
+msgstr "Tel:"
+
+#: app/views/home/_promo_classic_search.html.erb:40
+msgid "Тип имот"
+msgstr "Estate type"
+
+#: app/views/search/search.html.erb:26 app/views/search/search.html.erb:55
+msgid "Търси"
+msgstr "Search"
+
+#: app/views/home/_bottom.html.erb:12 app/views/home/sitemap.html.erb:11
+msgid "Търсене"
+msgstr "Search"
+
+#: app/views/home/_office.html.erb:13
+msgid "Факс:"
+msgstr "Fax:"
+
+#: app/views/search/search.html.erb:33
+msgid "Цена"
+msgstr "Price"
+
+#: app/views/home/_promo_classic_search.html.erb:47
+#: app/views/search/_qsearch_price_buy.html.erb:1
+#: app/views/search/_qsearch_price_rent.html.erb:1
+msgid "Цена:"
+msgstr "Price:"
+
+#: app/views/home/offer.html.erb:51
+msgid "асансьор"
+msgstr "elevator"
+
+#: app/views/home/offer.html.erb:78
+msgid "басейн"
+msgstr "swimming pool"
+
+#: app/views/home/offer.html.erb:63
+msgid "в затворен комплекс"
+msgstr "closed-type complex"
+
+#: app/views/home/offer.html.erb:62
+msgid "в строеж"
+msgstr "under construction"
+
+#: app/views/home/offer.html.erb:58
+msgid "вентилационна система"
+msgstr "ventilation system"
+
+#: app/views/home/index.html.erb:5
+msgid "виж всички новини"
+msgstr "all news"
+
+#: app/views/home/offer.html.erb:82
+msgid "виза"
+msgstr "planning permit"
+
+#: app/views/home/offer.html.erb:83
+msgid "вода"
+msgstr "water supply"
+
+#: app/views/home/offer.html.erb:60
+msgid "гараж"
+msgstr "garage"
+
+#: app/views/home/offer.html.erb:59
+msgid "градина"
+msgstr "garden"
+
+#: app/views/home/offer.html.erb:57
+msgid "двоен под"
+msgstr "raised floors"
+
+#: app/views/search/search.html.erb:35 app/views/search/search.html.erb:42
+msgid "до"
+msgstr "to"
+
+#: app/views/home/offer.html.erb:56
+msgid "достъп по асфалтов път"
+msgstr "asphalt road access"
+
+#: app/views/home/offer.html.erb:52
+msgid "електричество"
+msgstr "electricity supply"
+
+#: app/views/layouts/application.html.erb:21
+msgid "затвори"
+msgstr "close"
+
+#: app/views/home/offer.html.erb:54
+msgid "канализация"
+msgstr "sewage system"
+
+#: app/views/home/offer.html.erb:55
+msgid "конферентна зала"
+msgstr "conference hall"
+
+#: app/views/home/offer.html.erb:64
+msgid "кухня"
+msgstr "kitchen"
+
+#: app/views/home/_promo_classic_search.html.erb:71
+#: app/views/home/_promo_classic_search.html.erb:81
+#: app/views/search/_qsearch_price_buy.html.erb:14
+#: app/views/search/_qsearch_price_rent.html.erb:15
+msgid "макс"
+msgstr "max"
+
+#: app/views/home/_promo_classic_search.html.erb:50
+#: app/views/home/_promo_classic_search.html.erb:58
+#: app/views/search/_qsearch_price_buy.html.erb:4
+#: app/views/search/_qsearch_price_rent.html.erb:4
+msgid "мин"
+msgstr "min"
+
+#: app/views/home/offer.html.erb:73
+msgid "надземен гараж"
+msgstr "ground level garage"
+
+#: app/views/home/offer.html.erb:65
+msgid "ново стройтелство"
+msgstr "new development"
+
+#: app/views/home/offer.html.erb:66
+msgid "ново стройтелство с акт 16"
+msgstr "completed new development"
+
+#: app/views/home/offer.html.erb:53
+msgid "окабеляване"
+msgstr "complete cabling"
+
+#: app/views/search/search.html.erb:33 app/views/search/search.html.erb:40
+msgid "от"
+msgstr "from"
+
+#: app/views/home/offer_print.html.erb:5
+msgid "оферта"
+msgstr "offer"
+
+#: app/views/home/offer.html.erb:67
+msgid "офис - отворено пространство"
+msgstr "open space office"
+
+#: app/views/home/offer.html.erb:76
+msgid "охрана"
+msgstr "security"
+
+#: app/views/home/_project.html.erb:8
+#: app/views/home/_promo_classic_search.html.erb:14
+msgid "още"
+msgstr "more"
+
+#: app/views/home/offer.html.erb:68
+msgid "паркинг"
+msgstr "parking"
+
+#: app/views/home/offer.html.erb:69
+msgid "парко място"
+msgstr "parking space"
+
+#: app/views/home/offer.html.erb:70
+msgid "подземен гараж"
+msgstr "underground garage"
+
+#: app/views/layouts/application.html.erb:19
+msgid "предишна"
+msgstr "previous"
+
+#: app/views/home/offer.html.erb:71
+msgid "преходност"
+msgstr "passage type rooms"
+
+#: app/views/home/offer.html.erb:74
+msgid "рампа"
+msgstr "ramp"
+
+#: app/views/home/offer.html.erb:75
+msgid "ресторант"
+msgstr "restaurant"
+
+#: app/views/home/offer.html.erb:77
+msgid "складово помещение"
+msgstr "storage space"
+
+#: app/views/layouts/application.html.erb:20
+msgid "следваща"
+msgstr "next"
+
+#: app/views/home/offers.html.erb:26
+msgid "сортирай по"
+msgstr "sort by"
+
+#: app/views/home/offer.html.erb:84
+msgid "тоалетна"
+msgstr "WC"
+
+#: app/views/home/offer.html.erb:80
+msgid "товарен вход"
+msgstr "cargo entrance"
+
+#: app/views/home/offer.html.erb:81
+msgid "три фазен ток"
+msgstr "electricity for industrial needs"
+
+#: app/views/home/offer.html.erb:72
+msgid "управление на имот"
+msgstr "property management"
+
+#: app/views/home/offer.html.erb:61
+msgid "хидро и термо изолация"
+msgstr "hydro and thermal insulation"
+
+msgid "Моето търсене"
+msgstr "My search"
+
+msgid "Променете търсенето си тук"
+msgstr "Change your search criteria"
+
+msgid "Принтирай тази оферта"
+msgstr "Print"
+
+msgid "Работно време:"
+msgstr "Office opening hours:"
+
+msgid "eтаж"
+msgstr "floor"
+
+msgid "оборудване/техника"
+msgstr "equipment/technics"
+
+msgid "Области / Населени места"
+msgstr "Regions / Cities and villages"
+
+msgid "Населени места / Области"
+msgstr "Cities and villages / Regions"
+
+msgid "Често задавани въпроси"
+msgstr "Frequently asked questions"
+
+msgid "Речник"
+msgstr "Dictionary"
+
+msgid "Местоположение"
+msgstr "Location"
+
+msgid "Категории"
+msgstr "Categories"
+
+msgid "Корекция на търсенето"
+msgstr "Refine your Search"
+
+msgid ""
+"Ако не сте намерили това, което търсите, можете да коригирате търсенето си"
+msgstr ""
+"You are not completely happy with your search results? Refine your search"
+
+msgid "Етикети"
+msgstr "Tags"
+
+msgid "Управление"
+msgstr "Management"
+
+msgid "Подобни оферти"
+msgstr "Similar offers"
+
+msgid "Оферти близки по параметри на Вашето търсене"
+msgstr "Offers similar to Your search"
+
+msgid "Оферта по ID"
+msgstr "Offer by ID"
+
+msgid "Отвори"
+msgstr "Open"
+
+msgid ""
+"Ако знаете ID номера на офертата, която искате да видите, въведете го тук"
+msgstr "If you know the ID of the offer you want to see, please enter it here"
+
+msgid "Няма активна оферта с това ID"
+msgstr "No active offer with that ID"
+
+msgid "Категория"
+msgstr "Category"
+
+msgid "настоящ статут земя"
+msgstr "current land status"
+
+msgid "<b>Я</b>бонамент за бюлетин"
+msgstr "Newsletter subscription"
+
+msgid "Условия за ползване"
+msgstr "Privacy poilcy"
+
+msgid "Търси по ID:"
+msgstr "Search by ID:"
+
+msgid "Търси по ID"
+msgstr "Search by ID"
+
+msgid "ID=уникален номер на оферта"
+msgstr "ID=unique offer number"

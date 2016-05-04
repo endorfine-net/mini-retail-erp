@@ -1,0 +1,105 @@
+<%= hidden_field_tag :last_method, @last_method %>
+<fieldset class="commonParams ui-widget-content">
+  <legend>
+    Задължителни параметри
+  </legend>
+  
+  <%= render :partial => "/cms_form_elements_web", :locals =>{
+  :type => "select",
+  :param => "product_type_id",
+  :collection => @product_types,
+  :shown_name => "alias",
+  :title => "Тип продукт",
+  :example => "Изберете <b>Тип продукт</b>",
+  :blank => false,
+  :f => f
+  }%>
+  
+  <%= render :partial => "/cms_form_elements_web", :locals =>{
+  :type => "text_field",
+  :param => "alias",
+  :title => "Вид продукт",
+  :example => "Въведете ключови думи с малки букви, описващи продукта, разделени с интервал",
+  :f => f
+  }%>
+
+
+  <%= render :partial => "/cms_form_elements_web", :locals =>{
+  :type => "text_field",
+  :param => "product_code",
+  :title => "Код на продукта",
+  :example => "Въведете код на продукта",
+  :f => f
+  }%>
+  
+
+
+<%= render :partial => "/cms_form_elements_web", :locals =>{
+  :type => "select",
+  :param => "collection_year",
+  :collection => @collection_years,
+  :shown_name => false, #do not transform, use the array as is for the key and value
+  :title => "Година на колекция",
+  :example => "Изберете <b>година на колекция</b>",
+  :blank => false,
+  :f => f
+  }%>
+    
+ 
+  <div class="formElementBinder ">
+    <label>Сезон на колекцията</label>
+    <div class="form_element select ">
+      <select id="product_collection_season" name="product[collection_season]">
+        <option value="1" <%=get_selected_collection_season(@product.collection_season, 1)%>><%=get_season_name(1)%></option>
+        <option value="2" <%=get_selected_collection_season(@product.collection_season, 2)%>><%=get_season_name(2)%></option>
+      </select>
+      <div class="example select">
+        Изберете <b>Сезон на колекцията</b>
+      </div>
+    </div>
+  </div>
+
+
+<%= render :partial => "/cms_form_elements_web", :locals =>{
+  :type => "select",
+  :param => "status_id",
+  :collection => statuses,
+  :shown_name => "alias",
+  :title => "Статус",
+  :example => "Изберете <b>Статус на продукта</b>",
+  :blank => false,
+  :f => f
+  }%>
+
+</fieldset>
+<fieldset class="optionalParams ui-widget-content">
+  <legend>
+    Допълнителни параметри
+  </legend>
+  <%= render :partial => "/cms_form_elements_web",
+  :locals =>{
+  :type => "text_area",
+  :param => "note",
+  :title => "Бележки",
+  :example => "Бележки свързани с продукта",
+  :f => f
+  }%>
+</fieldset>
+<fieldset class="otherParams ui-widget-content">
+  <legend>
+    Снимка на продукт
+  </legend>
+  <div class="formElementBinder">
+    <div class="form_element">
+      <table border="0" cellspacing="0" cellpadding="2">
+        <tr>
+          <td valign="middle"><%= f.file_field :photo %></td>
+          <%if @product && !@product.photo_file_name.blank?%>
+          <td valign="middle" align="right"><a href="<%= @product.photo.url(:full)%>" target="_blank"><%= image_tag(@product.photo.url(:thumb))-%></a></td>
+          <td valign="middle"> <%= link_to image_tag("/images/icon-delete.png", :height => '24', :width => '24', :alt => "Изтриване", :title => "Изтриване на снимка", :border =>'0'), url_for(:action => 'delete_photo', :id => @product, :sort_direction=>@sort_direction, :sort_column=>@sort_column, :last_page=>@last_page, :search_string=>@search_string, :type=>@type) %></td>
+          <%end%>
+        </tr>
+      </table>
+    </div>
+  </div>
+</fieldset>

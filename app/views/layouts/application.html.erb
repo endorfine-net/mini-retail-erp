@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%=current_user.alias%> - ShoeAquarium ERP (<%= self.controller_name%>/<%= self.action_name%>)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="/javascripts/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.ui.datepicker-bg.js"></script>
+    <script type="text/javascript" src="/javascripts/ui/minified/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="/javascripts/jrails.js"></script>
+    
+
+    <script type="text/javascript" src="/javascripts/application.predefines.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.tablesorter.filter.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.client.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.ui.datetime-bg.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="/javascripts/application.js"></script>
+    
+    <script type="text/javascript" src="/javascripts/adapt.min.js"></script>
+
+    <link href="/stylesheets/smoothness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/styles-table.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/jquery.ui.datetime.css" rel="stylesheet" type="text/css" />
+    
+
+    <script type="text/javascript">
+		if ($.client.os == "Linux") {
+			document.write('<link href="/stylesheets/styles-linux.css" rel="stylesheet" type="text/css" />');
+		}
+
+    </script>
+    <%#= include_tiny_mce_if_needed %>
+    
+    <%if self.controller_name == "colors"%>
+      <link href="/stylesheets/colpick.css" rel="stylesheet" type="text/css" />
+      <script type="text/javascript" src="/javascripts/colpick.js"></script>
+    <%end%>
+    
+  </head>
+  <body>
+    <div class="container_12" id="container">
+      <div id="header" class="grid_12">
+        <div id="logo" class="grid_4 alpha">
+          <a href="/"><img src="/images/logo.gif" alt="Начало"  border="0" title="Начало"/></a>
+        </div>
+
+          
+          <div class="prefix_2 grid_5 omega" id="loggedUserNames">
+            <h1> Здравей, <%=current_user.alias%><%#= link_to current_user.alias, my_profile_user_path(current_user.id)%> </h1>
+          </div>
+          <div class="grid_1 omega" id="logoutButton">
+            <%= link_to image_tag("/images/icon-exit.png", :height => '38', :width => '32', :alt => "Изход", :title => "Изход", :border =>'0'), user_session_path, :method => :delete%>
+          </div>
+
+      </div>
+      <div id="tabs" class="grid_12 ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <%= render :partial => '/navigation_tabs' -%>
+        <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+          <div class="contentWrapper">
+            <div id="message"></div>
+            <div id="content" class="mergedColumns">
+              <%= yield  %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="credits_container"  class="grid_12">
+        <a href="http://www.jbsol.com" target="_blank">Разработка, дизайн и поддръжка</a> <a href="http://www.jbsol.com" target="_blank">JB Solutions</a>
+      </div>
+    </div>
+  </body>
+</html>

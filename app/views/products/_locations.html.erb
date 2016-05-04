@@ -1,0 +1,1 @@
+<%=select("offer", "location_id", @locations.collect {|location| [location.alias, location.id]}, {:include_blank => false})%>

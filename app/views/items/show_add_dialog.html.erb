@@ -1,0 +1,131 @@
+<script>var product_id = $(".modalInspector #product_id"), datetime = $(".modalInspector #datetime"), color_id = $(".modalInspector #color_id"), size = $(".modalInspector #size"), delivery_price = $(".modalInspector #delivery_price"), price = $(".modalInspector #price"), amount = $(".modalInspector #amount"), location_id = $(".modalInspector #location_id"), allFields = $([]).add(product_id).add(color_id).add(location_id).add(size).add(delivery_price).add(price).add(amount).add(location_id).add(datetime), tips = $(".validateTips");</script>
+
+<script>
+  $("#datetime").datetime({
+                          duration: '',  
+                          showTime: true,  
+                          constrainInput: false,  
+                          stepMinutes: 1,  
+                          stepHours: 1,  
+                          altTimeField: '',  
+                          time24h: false });
+</script>
+
+<%if !@message.nil?%>
+  <script language="JavaScript">
+    showSuccess("<%=@message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+<%if !@error_message.nil?%>
+  <script language="JavaScript">
+    showError("<%=@error_message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+<%@item = (@item.nil?)? Item.new() : @item%>
+
+<form class="modalInspector" id="modalDialogForm">
+  <%= hidden_field_tag :product_id, @product.id %>
+  <table border="0" cellspacing="0" cellpadding="2" style="width: 100%" id="add_items_form_table">
+    <thead>
+      <%= render :partial => "/products/product_details_header" %>
+      <%if @product.items && @product.items.length > 0%>
+       <tr>
+        <td valign="top" colspan="2">
+          <table width="100%" cellpadding="2" cellspacing="0" class="detailsHeader">
+            <tr>
+              <th valign="top"> Наличност: </th>
+              <td valign="top" class="itemsBlockList">
+                <select size="3" disabled="disabled">
+                <%for item in @product.items.by_color%>
+                    <option><%=item.color.code%>  |  <%=item.size%>  (<%=get_warehouse_item_quantity(item.id)%>)</option>
+                <%end%>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <%end%>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">
+        <div class="formHolder">
+        <% if has_role?("manager")%>
+          <div class="formElementBinder">
+            <label>Дата, час: </label>
+            <div class="form_element ">
+                <input name="datetime" id="datetime" type="text"  value="<%= @datetime%>"> 
+            </div>
+          </div>
+        <%end%>
+          <div class="formElementBinder">
+            <label>Цвят(код):</label>
+            <div class="form_element  ">
+              <select id="color_id" name="color_id">
+                <% @colors.each do |color| 
+                  if !color.secondary.blank?
+                    secondary_color = color.secondary
+                  else
+                    secondary_color = color.primary
+                  end
+                %>
+                  <option value="<%=color.id%>" rel="<%=color.primary%>" name="<%=secondary_color%>"><%=color.alias%></option>
+                <%end%>
+              </select>
+              <div id="color_example"></div>
+              <script language="JavaScript">              
+                function updateColorExample(){
+                  var selected = $("#color_id").find("option:selected")
+                  $("#color_example")
+                  .css("background-color", "#" + selected.attr("rel"))
+                  .css("border-bottom-color", "#" + selected.attr("name"));
+                }
+                $(document).ready(function() {
+                  $("#color_id").change(function() {
+                    updateColorExample();
+                  });
+                  updateColorExample();
+                });
+              </script>
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Номер:</label>
+            <div class="form_element  ">
+              <input type="text" id="size" name="size" value="<%=@item.size%>" >
+            </div>
+          </div>
+          <%if has_role?("manager")%>
+          <div class="formElementBinder">
+            <label>Kъм обект:</label>
+            <div class="form_element  ">
+              <%= select_tag(:location_id, options_from_collection_for_select(@locations, :id, :alias, @location_id.to_i) )%>
+            </div>
+          </div>
+          <%end%>
+          <div class="formElementBinder">
+            <label>Доставна цена:</label>
+            <div class="form_element  ">
+              <input type="text" id="delivery_price" name="delivery_price"  value="<%=@item.delivery_price%>" >
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Продажна цена:</label>
+            <div class="form_element  ">
+              <input type="text" id="price" name="price" value="<%=@item.price%>" >
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Брой:</label>
+            <div class="form_element  ">
+              <input type="text" id="amount" name="amount" value="<%=@amount%>">
+            </div>
+          </div>
+        </div><p class="validateTips"></p></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

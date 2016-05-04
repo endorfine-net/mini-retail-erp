@@ -1,0 +1,88 @@
+<fieldset class="commonParams ui-widget-content">
+  <legend>Задължителни параметри</legend>
+	<%=render :partial => "/cms_form_elements_web", :locals =>{
+	  	:type => "text_field",
+		:param => "login",
+    	:title => "Потребителско име",
+    	:example => "На латиница. Позволени са малки букви, точка, долно тире",
+    	:f => f
+  	}%>
+	<%=render :partial => "/cms_form_elements_web", :locals =>{
+    	:type => "password_field",
+    	:param => "password",
+    	:title => "Парола",
+    	:example => "Парола за потребителя",
+    	:f => f
+  	}%>
+	<%=render :partial => "/cms_form_elements_web", :locals =>{
+    	:type => "password_field",
+    	:param => "password_confirmation",
+    	:title => "Потвърдете Паролата",
+    	:example => "Потвърдете Потребителската Парола",
+    	:f => f
+  	}%>
+  	 <%=render :partial => "/cms_form_elements_web", :locals =>{
+      :type => "text_field",
+      :param => "email",
+      :title => "Електронна поща",
+      :example => "Електронна поща на потребителя",
+      :f => f
+    }%>
+  	<%=render :partial => "/cms_form_elements_web", :locals =>{
+      :type => "text_field",
+      :param => "alias",
+      :title => "Имена на потребителя",
+      :example => "Въведете Име и Фамилия на потребителя",
+      :f => f
+    }%>
+</fieldset>
+<fieldset class="optionalParams ui-widget-content">
+<legend>Допълнителни параметри</legend>
+    <%=render :partial => "/cms_form_elements_web", :locals =>{
+      :type => "select",
+      :param => "status_id",
+      :collection => statuses,
+      :shown_name => "alias",
+      :title => "Статус на потребител",
+      :example => "Изберете <b>Статус на потребител</b>",
+      :blank => false,
+      :f => f
+    }%>
+    <%=render :partial => "/cms_form_elements_web", :locals =>{
+      :type => "select",
+      :param => "role_id",
+      :collection => roles,
+      :shown_name => "alias",
+      :title => "Роля на потребител",
+      :example => "Изберете <b>Роля на потребител</b>",
+      :blank => false,
+      :f => f
+    }%>
+    <%=render :partial => "/cms_form_elements_web", :locals =>{
+      :type => "select",
+      :param => "location_id",
+      :collection => @locations,
+      :shown_name => "alias",
+      :title => "Обект (магазин)",
+      :example => "Изберете <b>Обект на потребител</b>",
+      :blank => false,
+      :f => f
+    }%>
+	<%=render :partial => "/cms_form_elements_web", :locals =>{
+	  	:type => "text_field",
+		:param => "phone",
+    	:title => "Телефон",
+    	:example => "Стационарен телефон",
+    	:f => f
+  	}%>
+	<%=render :partial => "/cms_form_elements_web", :locals =>{
+	  	:type => "text_field",
+		:param => "mobile",
+    	:title => "Мобилен Телефон",
+    	:example => "Мобилен телефонен номер на потребителя",
+    	:f => f
+  	}%>
+
+
+</fieldset>
+<%- f.label :password, f.object.new_record? ? nil : "Change password" -%>

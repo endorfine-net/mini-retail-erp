@@ -1,0 +1,13 @@
+<% form_for([@user], :html => { :multipart => true, :autocomplete =>"off" }) do |f| %>
+  <%= hidden_field_tag :sort_direction, params[:sort_direction] %>
+  <%= hidden_field_tag :sort_column, params[:sort_column] %> 
+  <%= hidden_field_tag :last_page, params[:last_page] %>
+  <%= hidden_field_tag :search_string, params[:search_string] %> 
+
+	<h2><%= link_to image_tag("/images/icon-back.png", :height => '32', :width => '32', :alt => "Връщане назад", :title => "Връщане назад", :border =>'0'), @back %>  Промяна на "<strong>Потребител</strong>"</h2>
+  <%= render :partial => '/errors', :locals => { :f => f }%>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <%= render :partial => '/submit_form_buttons', :locals => { :f => f, :button_title => "Промени", :cancel_path => @back}%>
+<% end %>
+
+<br /><%- link_to "My Profile", account_path %>

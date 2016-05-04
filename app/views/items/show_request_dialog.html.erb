@@ -1,0 +1,81 @@
+<script>
+        var item_quantity_id = $(".modalInspector #item_quantity_id"),
+            datetime = $(".modalInspector #datetime"),
+            location_id = $(".modalInspector #location_id"),
+            quantity = $(".modalInspector #quantity"),
+            note = $(".modalInspector #note"),
+            allFields = $([]).add(item_quantity_id).add(location_id).add(quantity).add(datetime).add(note),
+            tips = $(".validateTips");
+</script>
+
+
+<%if !@message.nil?%>
+  <script language="JavaScript">
+    showSuccess("<%=@message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+<%if !@error_message.nil?%>
+  <script language="JavaScript">
+    showError("<%=@error_message%>", "#modalDialogForm");
+  </script>
+<%end%>
+
+
+<form class="modalInspector" id="modalDialogForm">
+  <%= hidden_field_tag :item_quantity_id, @item_quantity.id %>
+  <table border="0" cellspacing="0" cellpadding="2" style="width: 100%" id="deliver_items_form_table">
+    <thead>
+      <%= render :partial => "/products/product_details_header" %>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">
+        <div class="formHolder">
+          <div class="formElementBinder">
+            <label>Цвят(код):</label>
+            <div class="form_element  ">
+              <%=getColorPreviewBox(@item_quantity.item.color)%>
+            </div>
+          </div>
+          <div class="formElementBinder">
+            <label>Номер:</label>
+            <div class="form_element  ">
+              <input type="text" id="size" name="size" disabled="disabled" class="disabledFormElement" value="<%=@item_quantity.item.size %>">
+            </div>
+          </div>
+        
+          <div class="formElementBinder">
+            <label>От обект:</label>
+            <div class="form_element  ">
+              <input type="text" disabled="disabled" class="disabledFormElement" value="<%= @item_quantity.location.alias%>">
+            </div>
+            </div>
+          </div>
+          
+          <div class="formElementBinder">
+            <label>Kъм обект:</label>
+            <div class="form_element  ">
+               <%= select_tag(:location_id, options_from_collection_for_select(@locations, :id, :alias, @location_id.to_i), :disabled => @is_disabled, :class => @is_disabled_class)%>
+            </div>
+          </div>
+          
+          <div class="formElementBinder">
+            <label>Брой:</label>
+            <div class="form_element  ">
+              <%= select_tag :quantity, options_for_select((1..@item_quantity.amount_current)) %>
+            </div>
+          </div>
+
+          <div class="formElementBinder">
+            <label>Бележка: </label>
+            <div class="form_element text_area">
+              <textarea id="note" name="note"><%=@note %></textarea>
+            </div>
+          </div>
+          
+        </div><p class="validateTips"></p></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

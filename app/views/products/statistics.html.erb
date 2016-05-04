@@ -1,0 +1,11 @@
+<%if !@products.blank?%>
+  <%= render :partial => "/products/all_statistics", :locals =>{:title => @title, :products => @products, :locations => @locations_select_list, :product_type_id => @product_type_id, :open_product_by_code => @open_product_by_code}%>
+<%else%>
+    <h2>Няма данни...</h2>
+    <%= render :partial => "toolbar_statistics"%>
+    <script type="text/javascript">
+        $(function() {
+            $("input:submit", "#toolbar").button();
+        });
+    </script>
+<%end%>

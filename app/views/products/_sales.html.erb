@@ -1,0 +1,110 @@
+    <script type="text/javascript">
+      $(window).load(function() { 
+        $("#sales_count_text").html("<span>" + $("#sales_count").val() + "</span>");
+        $("#sales_amount_text").html("<span>" + $("#sales_amount").val() + "</span>" + " лв.");
+      }); 
+    </script>
+
+<div class="contentWrapper">
+  <h2><%=@title%></h2>
+    
+    <%= render :partial => "/products/sales_toolbar"%>
+ 
+    <table cellpadding="0" cellspacing="0" border="0" class="bonsaiTable ui-corner-all" id="productList">   
+        <thead>
+          <tr>
+            <td colspan="15" align="center">
+              <table border="0" cellpadding="10" cellspacing="0" id="salesStatus">
+              <tr>
+                <td align="right">
+                  Продажби:
+                </td>
+                <td id="sales_count_text" class="salesStatusAmounts">                  
+                </td>
+                <td align="right">
+                  Сума:
+                </td>
+                <td id="sales_amount_text" class="salesStatusAmounts">                 
+                </td>
+              </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="columnHeads">
+            <th>Снимка</th>
+            <th>Код.продукт</th>                                               
+            <th>Цвят</th>
+            <th>Номер</th>
+            <th>Дата</th>
+            <th>Начин на плащане</th>
+            <th>Сума</th>  
+            <th>Потребител</th>
+            <th>Обект</th> 
+            <th>Забележка</th>       
+          </tr>
+        </thead>
+        <tbody class="listBody">
+          
+          <%
+            sales_count = 0
+            sales_amount = 0
+          %>
+          <% @results.each do |sale| %>
+            <% 
+                sales_count += 1
+                sales_amount += sale.price
+                product = sale.product
+                item = sale.item
+
+                if !sale.price.nil? && !sale.default_price.nil?
+                    if sale.price.abs != sale.default_price.abs
+                     styleClass = 'class="highlight"'
+                    else
+                     styleClass = ''
+                    end
+                end
+            %>
+            <tr <%=styleClass%>>
+            <td align="CENTER" class="productPhoto">
+                  <a href="<%=product.photo.url(:full)%>" target="_blank"><%= image_tag(product.photo.url(:tiny), html_options ={:border, "0"}) unless product.photo_file_name.blank? -%></a>
+            </td>
+            <td align="CENTER">
+              <%= product.product_code%>
+            </td>
+            <td align="CENTER">
+              <%= item.color.alias%>
+            </td>
+            <td align="CENTER">
+              <%= item.size%>
+            </td>
+            <td align="CENTER">
+              <%= format_datetime(sale.created_at) -%>
+            </td> 
+            <td align="CENTER">
+              <%= sale.payment_type.alias unless sale.payment_type.nil?%>
+            </td>
+            <td align="CENTER">
+              <%= sale.price%>
+            </td>
+            <td align="CENTER">
+              <%= sale.user.alias%>
+            </td> 
+            <td align="CENTER">
+              <%= sale.location.alias%>
+            </td>  
+            <td align="CENTER">
+              <%= sale.note%>
+            </td>
+          </tr>
+        <%end%>
+        <input type="hidden" id="sales_count" value="<%=sales_count%>" />
+        <input type="hidden" id="sales_amount" value="<%=sales_amount%>" />
+        </tbody> 
+          
+    </table>
+  <script type="text/javascript">
+        //transform_table_list("<%=self.controller_name%>","<%=self.action_name%>");
+   </script>
+</div>
+<br />
+
